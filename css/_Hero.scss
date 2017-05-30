@@ -1,0 +1,65 @@
+#hero {
+  background: #f7991c;
+  color: white;
+  text-align: center;
+  padding-top: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('/img/circles--white.png'), url('/img/circles--dotted--white.png');
+    background-repeat: no-repeat;
+    background-size: 80%, 100%;
+    background-position: 340px -325px, -163px -476px;
+    opacity: 0.25;
+  }
+
+  & h1 {
+    margin-top: 1em;
+    font-size: 1.5rem;
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    line-height: 1.3em;
+    text-transform: uppercase;
+
+    & strong {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+
+  & h2 {
+    font-size: 2rem;
+    font-weight: 300;
+  }
+}
+
+img.logo {
+  margin: 0 1em 0 0;
+  filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=1, OffY=1, Color='#EEE')";
+  filter: url(#drop-shadow);
+  -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.box {
+  margin: 2em 0 9em;
+  max-width: 60rem;
+  font-size: 1.05rem;
+  line-height: 1.4775;
+  border: 1px solid white;
+  padding: 3em;
+
+  & :last-child {
+    margin-bottom: 0;
+  }
+}

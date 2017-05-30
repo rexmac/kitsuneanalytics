@@ -1,17 +1,3 @@
-:root {
-  --bgColor: #404040;
-  --color: white;
-}
-
-.site-header {
-  background: var(--bgColor);
-  color: var(--color);
-
-  a {
-    color: var(--color);
-    text-decoration: none;
-
-    &:hover {
-    }
-  }
+.headroom-wrapper {
+  height: 90px !important;
 }

@@ -9,14 +9,18 @@ const options = {
     {
       name: 'Raleway',
       styles: [
+        '200',
         '300',
         '400',
+        '500',
         '700'
       ]
     }
   ],
   headerFontFamily: ['Raleway', 'sans-serif'],
+  headerWeight: 500,
   bodyFontFamily: ['Raleway', 'sans-serif'],
+  bodyWeight: 200,
   baseFontSize: '16px',
   baseLineHeight: 1.65,
   includeNormalize: false,

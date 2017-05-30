@@ -17,24 +17,21 @@ module.exports = React.createClass({
   render () {
     return (
       <div>
-        <Headroom
-          wrapperStyle={{
-            marginBottom: rhythm(1),
-          }}
-        >
+        <Headroom>
           <SiteHeader />
         </Headroom>
 
         {/* @todo Wrap or replace this with a <main> element? */}
-        <Container
-          style={{
-            maxWidth: 960,
-            padding: `${rhythm(1)} ${rhythm(3/4)}`,
-            paddingTop: 0,
-          }}
-        >
+        {/* <Container
+         style={{
+         maxWidth: 960,
+         padding: `${rhythm(1)} ${rhythm(3/4)}`,
+         paddingTop: 0,
+         }}
+         > */}
+        <main>
           {this.props.children}
-        </Container>
+        </main>
 
       </div>
     )

@@ -42,8 +42,8 @@ module.exports = React.createClass({
           <svg height="0" style={{ display: 'block' }} xmlns="http://www.w3.org/2000/svg">
             <filter id="drop-shadow">
               <feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/>
-              <feOffset dx="12" dy="12" result="offsetblur"/>
-              <feFlood flood-color="rgba(0,0,0,0.5)"/>
+              <feOffset dx="1" dy="1" result="offsetblur"/>
+              <feFlood flood-color="rgba(0,0,0,0.25)"/>
               <feComposite in2="offsetblur" operator="in"/>
               <feMerge>
                 <feMergeNode/>
