@@ -1,3 +1,7 @@
+var fs = require('fs-extra');
+var path = require('path');
+var buildFeed = require('./scripts/buildFeed');
+
 /*
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import stylelintPlugin from 'stylelint-webpack-plugin';
@@ -37,3 +41,16 @@ exports.modifyWebpackConfig = (config, stage) => {
   return config;
 };
 */
+
+// @see https://github.com/emilyaviva/gatsby-starter-blog-multiple-authors/blob/master/gatsby-node.js
+exports.postBuild = (pages, callback) => {
+  // Build RSS feed.
+  //console.log('Building Atom feed');
+  //buildFeed(pages, callback);
+
+  // Copy favicon.
+  fs.copySync(path.join(__dirname, '/favicon'), path.join(__dirname, '/public/favicon'));
+
+  // Next callback.
+  callback();
+};

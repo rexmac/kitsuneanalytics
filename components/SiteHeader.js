@@ -29,7 +29,7 @@ const pages = [
 const SiteHeader = () =>
   <header className={styles['site-header']}>
     <aside className={styles['branding']}>
-      <img className="logo" src={prefixLink('/img/kitsune_logo_white.svg')} width="53" height="50" alt="Kitsune Analytics logo" />
+      <img className="logo" src={prefixLink('/img/logo--kitsune--white.svg')} width="53" height="50" alt="Kitsune Analytics logo" />
       <div className={styles['name-title']}>
         <Link to={prefixLink('/')}>
           <strong>Kitsune</strong>Analytics
