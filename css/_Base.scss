@@ -20,6 +20,24 @@ main section {
   padding-top: 110px;
   color: var(--kitsuneGray);
 
+  &::before { // vertical line "connecting" to previous section
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 20.33333em;
+    border-left: 2px solid var(--kitsuneLightGray);
+    margin-left: -1px;
+  }
+
+  &:first-child {
+    &::before,
+    .box::before {
+      display: none;
+    }
+  }
+
   &::after { // vertical line connecting to next section
     content: '';
     display: block;
@@ -78,6 +96,24 @@ main section {
     border-bottom: none;
     padding: 3em 3em 1em;
 
+    &::before { // icon in circle
+      content: '';
+      display: block;
+      width: 162px;
+      height: 162px;
+      //margin-top: -244px;
+      margin-bottom: 4em;
+      position: absolute;
+      top: -192px;
+      left: 50%;
+      margin-left: -81px;
+      background-color: var(--kitsuneLightGray);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 89px;
+      border-radius: 50%;
+    }
+
     &::after { // left half of bottom border
       content: '';
       display: block;
@@ -131,36 +167,9 @@ main section {
 }
 
 #services {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    height: 20.33333em;
-    border-left: 2px solid var(--kitsuneLightGray);
-    margin-left: -1px;
-  }
-
   & .box {
-    &::before {
-      content: '';
-      display: block;
-      width: 162px;
-      height: 162px;
-      //margin-top: -244px;
-      margin-bottom: 4em;
-      position: absolute;
-      top: -192px;
-      left: 50%;
-      margin-left: -81px;
-      background: var(--kitsuneLightGray) url('/img/graph.svg') no-repeat center center;
-      background-size: 89px;
-      border-radius: 50%;
+    &::before { // icon in circle
+      background-image: url('/img/graph.svg');
     }
   }
 
@@ -194,5 +203,30 @@ main section {
     margin: 1em 0;
     padding: 1em 0 0;
     border-top: 1px solid var(--kitsuneLightGray);
+  }
+}
+
+#meet-the-team {
+  background-color: var(--kitsuneLightGray);
+
+  &::before {
+    border-color: white;
+  }
+
+  .design-star::before,
+  .design-star::after,
+  &::after,
+  & .box::before,
+  & .box::after {
+    background-color: white;
+  }
+
+  & .box {
+    border-color: white;
+
+    &::before { // icon in circle
+      background-image: url('/img/team.svg');
+      background-size: 120px;
+    }
   }
 }
