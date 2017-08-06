@@ -35,8 +35,17 @@ class ContactForm extends React.Component {
 
     if (!this.showFormErrors()) {
       console.log('form is invalid: do not submit');
+      e.target.classList.remove('btn-success');
+      e.target.classList.add('btn-error');
     } else {
       console.log('form is valid: submit');
+      e.target.classList.remove('btn-error');
+      e.target.classList.add('btn-success');
+
+      // Fire off request to form processor
+      // ...
+      // Disable / remove form; replace with thank you message
+      //...
     }
   }
 
@@ -94,7 +103,7 @@ class ContactForm extends React.Component {
     return (
       <form noValidate id="contact-form">
         <div className="form-group">
-          <input className="form-control"
+          <input className="form-control placeholder-shown"
                  type="text"
                  id="contact-name"
                  name="name"
@@ -106,7 +115,7 @@ class ContactForm extends React.Component {
           <div className="error" id="name-error" />
         </div>
         <div className="form-group">
-          <input className="form-control"
+          <input className="form-control placeholder-shown"
                  type="text"
                  id="contact-companyName"
                  name="companyName"
@@ -119,7 +128,7 @@ class ContactForm extends React.Component {
           <div className="error" id="companyName-error" />
         </div>
         <div className="form-group">
-          <input className="form-control"
+          <input className="form-control placeholder-shown"
                  type="phone"
                  id="contact-phone"
                  name="phone"
@@ -131,7 +140,7 @@ class ContactForm extends React.Component {
           <div className="error" id="phone-error" />
         </div>
         <div className="form-group">
-          <input className="form-control"
+          <input className="form-control placeholder-shown"
                  type="email"
                  id="contact-email"
                  name="email"
@@ -143,7 +152,7 @@ class ContactForm extends React.Component {
           <div className="error" id="email-error" />
         </div>
         <div className="form-group">
-          <input className="form-control"
+          <input className="form-control placeholder-shown"
                  type="email"
                  id="contact-emailConfirm"
                  name="emailConfirm"
@@ -154,7 +163,7 @@ class ContactForm extends React.Component {
           <label htmlFor="contact-emailConfirm">Confirm Email</label>
           <div className="error" id="emailConfirm-error" />
         </div>
-        <button className="btn btn-primary"
+        <button className="btn btn-primary btn-submit"
                 onClick={ this.handleSubmit }>submit</button>
       </form>
     );

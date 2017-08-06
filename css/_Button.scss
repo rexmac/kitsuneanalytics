@@ -1,0 +1,125 @@
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  margin: 1rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  transition: all 0.3s;
+
+  & span {
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* Pseudo elements for icons */
+  &::before {
+    position: absolute;
+    left: 0;
+    width: 40%;
+    font-size: 1.6em;
+    line-height: 0.66667;
+    color: white;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s;
+  }
+}
+
+.btn-primary {
+  background: var(--kitsuneOrange);
+  color: white;
+
+  &:hover {
+    //background:
+  }
+}
+
+.btn-submit::before {
+  content: "\f120";
+}
+
+
+/* Success and error */
+
+.btn-success,
+.btn-error {
+  color: transparent;
+}
+
+.btn-success::after,
+.btn-error::after {
+  z-index: 1;
+  color: #fff;
+  left: 40%;
+}
+
+.btn-success::before {
+  content: "\f118";
+}
+
+.btn-success::after {
+  content: "Success!";
+  animation: moveUp 0.5s;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-error {
+  animation: shake 0.5s;
+}
+
+/* From Dan Eden's animate.css: http://daneden.me/animate/ */
+@keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+
+.btn-error:before {
+  content: "\f119";
+}
+
+.btn-error:after {
+  content: "Error!";
+  animation: scaleFromUp 0.5s;
+}
+
+@keyframes scaleFromUp {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
