@@ -93,7 +93,7 @@ main section {
     font-size: 1.05rem;
     line-height: 1.4775;
     border: 2px solid var(--kitsuneLightGray);
-    border-bottom: none;
+    border-bottom-width: 0;
     padding: 3em 3em 1em;
 
     &::before { // icon in circle
@@ -296,4 +296,43 @@ main section {
     }
   }
   */
+}
+
+#contact {
+  &::after {
+    display: none;
+  }
+
+  & .box {
+    border-top-width: 0;
+    border-bottom-width: 2px;
+
+    &::before { // icon in circle
+      background-image: url('/img/contact.svg');
+      background-size: 75px;
+    }
+
+    &::after { // top-right border
+      top: 0;
+      right: 0;
+      bottom: auto;
+      left: auto;
+    }
+
+    .design-star {
+      &::before {
+        top: 0;
+        bottom: auto;
+        left: 50%;
+        margin: -4px 0 0 -1.5em;
+      }
+
+      &::after {
+        top: 0;
+        right: auto;
+        left: 0;
+        bottom: auto;
+      }
+    }
+  }
 }

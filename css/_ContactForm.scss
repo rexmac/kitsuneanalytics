@@ -1,0 +1,55 @@
+#contact-form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+  .form-group {
+    position: relative;
+    width: 50%;
+    //height: 3.625rem;
+    //background: var(--kitsuneLightGray);
+    max-width: 25em;
+    //padding: 0.5em 1em;
+    margin: 0 0 1em;
+
+    &:first-child {
+      width: 100%;
+      max-width: initial;//50em;
+    }
+
+    input {
+      width: 100%;
+      //font-size: 1rem;
+      line-height: 2.625rem; //3.625rem - 1em (top and bottom padding)
+      padding: 0.5em 1em;
+      //background: transparent;
+      background: var(--kitsuneLightGray);
+      border: none;
+      outline: none;
+    }
+
+    label {
+      position: absolute;
+      top: 1.04167em;
+      left: 1.05rem;
+    }
+
+    input:focus + label,
+    //input:focus:valid + label,
+    //input:focus.placeholder-shown + label {
+    input:focus:not(.placeholder-shown) + label {
+      font-size: 0.75em;
+      top: 0.25em;
+      visibility: visible;
+    }
+
+    //input:valid + label,
+    input:not(.placeholder-shown) + label {
+      visibility: hidden;
+    }
+
+    .error {
+      color: #c00;
+    }
+  }
+}

@@ -6,6 +6,7 @@ import { config } from 'config'
 import Team from '../components/Team'
 import Hero from '../components/Hero'
 import Services from '../components/Services'
+import Contact from "../components/Contact";
 
 export default class Index extends React.Component {
   render () {
@@ -25,8 +26,7 @@ export default class Index extends React.Component {
 
         <Team />
 
-        <section id="contact">
-        </section>
+        <Contact />
       </div>
     )
   }
