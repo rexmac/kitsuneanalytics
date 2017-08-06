@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Bio = ({ name, title, href, imgSrc, imgAlt, desc }) =>
-  <div className='bio'>
-    <h3>
+  <div className="bio">
+    <h3 className="name">
       {href ? (
         <a href={href}>{name}</a>
       ) : (
@@ -11,15 +11,22 @@ const Bio = ({ name, title, href, imgSrc, imgAlt, desc }) =>
     </h3>
 
     {title &&
-      <h4>{title}</h4>
+      <h4 className="title">{title}</h4>
     }
 
+    {/*
     {href ? (
-      <a href={href}><img src={imgSrc} alt={imgAlt} /></a>
+      <a href={href}><img className="photo" src={imgSrc} alt={imgAlt} /></a>
     ) : (
-      <img src={imgSrc} alt={imgAlt} />
-    )}
-    <p>{desc}</p>
+      <img className="photo" src={imgSrc} alt={imgAlt} />
+    )}*/}
+    <div className="description">
+      {
+        desc.split(/\r?\n/).map((text, index) => {
+          return <p key={index}>{text}</p>;
+        })
+      }
+    </div>
   </div>
 
 Bio.propTypes = {
