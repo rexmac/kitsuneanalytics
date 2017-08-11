@@ -208,6 +208,32 @@ main section {
 
 #meet-the-team {
   background-color: var(--kitsuneLightGray);
+  position: relative;
+
+  .circles {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+              url('/img/circles--black.png'),
+              url('/img/circles--black.png'),
+              url('/img/circles--dotted--black.png'),
+              url('/img/circles--dotted--black.png');
+      background-repeat: no-repeat;
+      background-size: 90%, 95%, 120%, 115%;
+      background-position:
+        365px -315px,
+        634px 511px,
+        -318px -488px,
+        -959px 691px;
+      opacity: 0.05;
+    }
+  }
 
   &::before {
     border-color: white;

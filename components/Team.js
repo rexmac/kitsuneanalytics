@@ -5,6 +5,7 @@ import TeamCarousel from './TeamCarousel'
 
 const Team = () =>
   <section id="meet-the-team">
+    <div className="circles"></div>
     <div className="box">
       <a name='meet-the-team' />
       <h2>Meet the Team</h2>

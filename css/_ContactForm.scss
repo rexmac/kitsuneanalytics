@@ -1,7 +1,14 @@
 #contact-form {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  flex-flow: row nowrap;
+
+  > div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    transition-property: flex, opacity;
+    transition-duration: 2s;
+  }
 
   .form-group {
     position: relative;
@@ -13,7 +20,7 @@
     margin: 0 0 1em;
 
     &:first-child {
-      width: 100%;
+      width: 99%;
       max-width: initial;//50em;
     }
 
@@ -48,8 +55,36 @@
       visibility: hidden;
     }
 
-    .error {
+    &.error {
+      .error-message {
+        display: block;
+      }
+    }
+
+    .error-message {
+      display: none;
       color: #c00;
+    }
+  }
+
+  &.success {
+    > div {
+      opacity: 0;
+      flex: 0;
+      overflow: hidden;
+      transition: flex 2s;
+    }
+
+    .form-group {
+      //flex: 0;
+      //transition: flex 2s;
+
+      input {
+        padding: 0;
+      }
+      label {
+        display: none;
+      }
     }
   }
 }
