@@ -1,16 +1,136 @@
-#contact-form {
+.collapsible-wrapper {
   display: flex;
-  flex-flow: row nowrap;
+  overflow: hidden;
 
-  > div {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    transition-property: flex, opacity;
-    transition-duration: 2s;
+  &::after {
+    content: '';
+    height: 50px;
+    transition: height 0.6s linear, max-height 0s 0.6s linear;
+    max-height: 0px;
   }
 
-  .form-group {
+  &.collapsed {
+    &::after {
+      height: 0;
+      transition: height 0.3s linear;
+      max-height: 50px;
+    }
+
+    & > .collapsible {
+      margin-bottom: -2000px;
+      transition: margin-bottom 0.6s cubic-bezier(1, 0, 1, 1),
+                  opacity 0.6s, max-height 0s 0.6s;
+      //visibility: hidden;
+      opacity: 0;
+      max-height: 0;
+    }
+  }
+}
+
+.collapsible {
+  transition: margin-bottom 0.6s cubic-bezier(0, 0, 0, 1);
+  margin-bottom: 0;
+  max-height: 1000000px;
+  opacity: 1;
+}
+
+@keyframes sk-bounce {
+  0%, 100% { transform: scale(0.0) }
+  50% { transform: scale(1.0) }
+}
+
+.loader {
+  //display: none;
+  opacity: 0;
+  transition: opacity 0s 0s ease-in;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  text-align: center;
+
+  &.loading {
+    //display: block;
+    opacity: 1;
+    z-index: 2;
+    transition-duration: 0.6s;
+    transition-delay: 0.6s;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    background: radial-gradient(circle at center, black 0, white 100%);
+    opacity: 0.65;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -1.5rem 0 0 -1.5rem;
+    height: 3rem;
+    width: 3rem;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      border-radius: 50%;
+      background-color: #f5f5f5;
+      opacity: 0.6;
+      animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+
+    &::after {
+      animation-delay: -1.0s;
+    }
+  }
+
+  &::after {
+    content: 'Loading...';
+    color: #f5f5f5;
+    font-weight: bold;
+    font-size: 2rem;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 1.5em 0 0 -2em;
+    z-index: 4;
+  }
+}
+
+#contact-form {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+
+  .collapsible {
+    display: flex;
+    flex-flow: row wrap;
+    //transform: scaleY(100%);
+    //max-height: 999999px;
+    justify-content: space-between;
+    //transition-property: max-height, opacity;
+    //transition-duration: 2s;
+  }
+
+  div.form-group {
     position: relative;
     width: 50%;
     //height: 3.625rem;
@@ -19,12 +139,14 @@
     //padding: 0.5em 1em;
     margin: 0 0 1em;
 
-    &:first-child {
-      width: 99%;
+    &:first-child,
+    &:last-of-type {
+      width: 100%;
       max-width: initial;//50em;
     }
 
-    input {
+    input,
+    textarea {
       width: 100%;
       //font-size: 1rem;
       line-height: 2.625rem; //3.625rem - 1em (top and bottom padding)
@@ -42,16 +164,19 @@
     }
 
     input:focus + label,
+    textarea:focus + label,
     //input:focus:valid + label,
     //input:focus.placeholder-shown + label {
-    input:focus:not(.placeholder-shown) + label {
+    input:focus:not(.placeholder-shown) + label,
+    textarea:focus:not(.placeholder-shown) + label {
       font-size: 0.75em;
       top: 0.25em;
       visibility: visible;
     }
 
     //input:valid + label,
-    input:not(.placeholder-shown) + label {
+    input:not(.placeholder-shown) + label,
+    textarea:not(.placeholder-shown) + label {
       visibility: hidden;
     }
 
@@ -68,23 +193,48 @@
   }
 
   &.success {
+    /*
     > div {
       opacity: 0;
-      flex: 0;
+      //flex: 0;
+      //height: 0;
+      margin: 0;
+      //transform: scaleY(0);
+      max-height: 0;
       overflow: hidden;
-      transition: flex 2s;
     }
 
     .form-group {
       //flex: 0;
       //transition: flex 2s;
 
-      input {
-        padding: 0;
+      input,
+      textarea {
+        //padding: 0;
       }
+
       label {
-        display: none;
+        //display: none;
       }
     }
+    */
   }
+
+  .btn-submit {
+    margin: 1rem auto;
+  }
+
+  &.submitted {
+    .contact-thankYou {
+      display: block;
+      opacity: 1;
+      margin-top: 2000px;
+    }
+  }
+}
+
+.contact-thankYou {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.6s;
 }

@@ -1,4 +1,19 @@
 import React from 'react'
+import ContactFormThankYou from './ContactFormThankYou'
+import Loader from './Loader'
+
+function withLoader(WrappedComponent) {
+  return React.createClass({
+    render: function () {
+      // Use JSX spread syntax to pass all props and state down automatically.
+      return (
+        <Loader>
+          <WrappedComponent {...this.props} {...this.state} />;
+        </Loader>
+      )
+    }
+  });
+}
 
 class ContactForm extends React.Component {
   constructor(props) {
@@ -10,15 +25,19 @@ class ContactForm extends React.Component {
         companyName: '',
         phone: '',
         email: '',
-        emailConfirm: ''
+        emailConfirm: '',
+        comment: ''
       },
+      loading: false,
       success: false,
+      submitted: false,
       touched: {
         name: false,
         companyName: false,
         phone: false,
         email: false,
-        emailConfirm: false
+        emailConfirm: false,
+        comment: false
       }
     };
 
@@ -60,7 +79,8 @@ class ContactForm extends React.Component {
         companyName: true,
         phone: true,
         email: true,
-        emailConfirm: true
+        emailConfirm: true,
+        comment: true
       }
     });
 
@@ -68,17 +88,34 @@ class ContactForm extends React.Component {
 
     if (!this.canBeSubmitted()) {
       console.log('form is invalid: do not submit');
-      return;
+      //return;
     }
 
     console.log('form is valid: submit');
-    this.setState({ success: true });
+    this.setState({ success: true, loading: true });
+    //this.setState({ success: true });
+    //this.setState({ loading: true });
 
     const formPayload = this.state.input;
     // Fire off request to form processor
-    // ...
-    // Disable / remove form; replace with thank you message
-    //...
+    const url = 'https://script.google.com/macros/s/AKfycbxc6cWBmiOpM6yVwDr_RkmD2AxXkS8ZEcHsOvAYMMBPKD6OK6kA/exec';
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    //xhr.withCredentials = true;
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    const that = this;
+    xhr.onreadystatechange = function() {
+      console.log(xhr.status, xhr.statusText);
+      console.log(xhr.responseText);
+      // Disable / remove form; replace with thank you message
+      that.setState({ loading: false, submitted: true });
+      return;
+    };
+    // url encode form data for sending as post data
+    const encoded = Object.keys(formPayload).map(function(k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(formPayload[k])
+    }).join('&');
+    xhr.send(encoded);
   }
 
   /*
@@ -182,18 +219,27 @@ class ContactForm extends React.Component {
   }
 
   canBeSubmitted() {
+    console.log('canBeSubmitted?');
     const errors = this.validate();
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
+    const formHasErrors = Object.keys(errors).some(x => errors[x]);
+    return !formHasErrors;
   }
 
   render() {
-    //const submitEnabled = this.showFormErrors();
-
+    console.log('render');
     const errors = this.validate();
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    const formHasErrors = Object.keys(errors).some(x => errors[x]);
     const allTouched = Object.keys(this.state.touched).every(x => this.state.touched[x]);
+    const loading = this.state.loading;
     const success = this.state.success;
+    const submitted = this.state.submitted;
+    const formClassNames = [
+      'collapsible-wrapper',
+      loading ? 'loading' : '',
+      success ? 'success' : '',
+      formHasErrors ? '' : 'submittable',
+      submitted ? 'submitted collapsed' : ''
+    ];
 
     const shouldMarkError = (field) => {
       const hasError = errors[field];
@@ -205,80 +251,94 @@ class ContactForm extends React.Component {
 
     return (
       <form id="contact-form"
-            className={success ? 'success' : ''}
-            onSubmit={this.handleSubmit}
+            className={ formClassNames.join(' ') }
+            onSubmit={ this.handleSubmit }
             noValidate
       >
-        <div>
-        <div className={`form-group ${shouldMarkError('name') ? 'error' : ''}`}>
-          <input className="form-control placeholder-shown"
-                 type="text"
-                 id="contact-name"
-                 name="name"
-                 ref="name"
-                 value={ this.state.input.name }
-                 onBlur={ this.handleBlur }
-                 onChange={ this.handleChange }
-                 required />
-          <label htmlFor="contact-name">Name</label>
-          <div className="error-message" id="name-error">{errors.name}</div>
+        <Loader loading={loading} />
+        <div className="collapsible">
+          <div className={`form-group ${shouldMarkError('name') ? 'error' : ''}`}>
+            <input className="form-control placeholder-shown"
+                   type="text"
+                   id="contact-name"
+                   name="name"
+                   ref="name"
+                   value={ this.state.input.name }
+                   onBlur={ this.handleBlur }
+                   onChange={ this.handleChange }
+                   required />
+            <label htmlFor="contact-name">Name</label>
+            <div className="error-message" id="name-error">{errors.name}</div>
+          </div>
+          <div className={`form-group ${shouldMarkError('companyName') ? 'error' : ''}`}>
+            <input className="form-control placeholder-shown"
+                   type="text"
+                   id="contact-companyName"
+                   name="companyName"
+                   ref="companyName"
+                   value={ this.state.input.companyName }
+                   onBlur={ this.handleBlur }
+                   onChange={ this.handleChange }
+            />
+            <label htmlFor="contact-companyName">Company Name</label>
+            <div className="error-message" id="companyName-error">{errors.companyName}</div>
+          </div>
+          <div className={`form-group ${shouldMarkError('phone') ? 'error' : ''}`}>
+            <input className="form-control placeholder-shown"
+                   type="phone"
+                   id="contact-phone"
+                   name="phone"
+                   ref="phone"
+                   value={ this.state.input.phone }
+                   onBlur={ this.handleBlur }
+                   onChange={ this.handleChange }
+            />
+            <label htmlFor="contact-phone">Phone</label>
+            <div className="error-message" id="phone-error">{errors.phone}</div>
+          </div>
+          <div className={`form-group ${shouldMarkError('email') ? 'error' : ''}`}>
+            <input className="form-control placeholder-shown"
+                   type="email"
+                   id="contact-email"
+                   name="email"
+                   ref="email"
+                   value={ this.state.input.email }
+                   onBlur={ this.handleBlur }
+                   onChange={ this.handleChange }
+                   required />
+            <label htmlFor="contact-email">Email</label>
+            <div className="error-message" id="email-error">{errors.email}</div>
+          </div>
+          <div className={`form-group ${shouldMarkError('emailConfirm') ? 'error' : ''}`}>
+            <input className="form-control placeholder-shown"
+                   type="email"
+                   id="contact-emailConfirm"
+                   name="emailConfirm"
+                   ref="emailConfirm"
+                   value={ this.state.input.emailConfirm }
+                   onBlur={ this.handleBlur }
+                   onChange={ this.handleChange }
+                   required />
+            <label htmlFor="contact-emailConfirm">Confirm Email</label>
+            <div className="error-message" id="emailConfirm-error">{errors.emailConfirm}</div>
+          </div>
+          <div className={`form-group ${shouldMarkError('comment') ? 'error' : ''}`}>
+            <textarea className="form-group placeholder-shown"
+                      id="contact-comment"
+                      name="comment"
+                      ref="comment"
+                      value={ this.state.input.comment }
+                      onBlur={ this.handleBlur }
+                      onChange={ this.handleChange }
+            ></textarea>
+            <label htmlFor="contact-comment">Comment</label>
+            <div className="error-message" id="comment-error">{ errors.comment }</div>
+          </div>
+          <button className={`btn btn-primary btn-submit ${formHasErrors && allTouched ? 'btn-error' : ''} ${success ? 'btn-success' : ''}`}
+                  onClick={ this.handleSubmit }
+          >Submit</button>
         </div>
-        <div className={`form-group ${shouldMarkError('companyName') ? 'error' : ''}`}>
-          <input className="form-control placeholder-shown"
-                 type="text"
-                 id="contact-companyName"
-                 name="companyName"
-                 ref="companyName"
-                 value={ this.state.input.companyName }
-                 onBlur={ this.handleBlur }
-                 onChange={ this.handleChange }
-          />
-          <label htmlFor="contact-companyName">Company Name</label>
-          <div className="error-message" id="companyName-error">{errors.companyName}</div>
-        </div>
-        <div className={`form-group ${shouldMarkError('phone') ? 'error' : ''}`}>
-          <input className="form-control placeholder-shown"
-                 type="phone"
-                 id="contact-phone"
-                 name="phone"
-                 ref="phone"
-                 value={ this.state.input.phone }
-                 onBlur={ this.handleBlur }
-                 onChange={ this.handleChange }
-          />
-          <label htmlFor="contact-phone">Phone</label>
-          <div className="error-message" id="phone-error">{errors.phone}</div>
-        </div>
-        <div className={`form-group ${shouldMarkError('email') ? 'error' : ''}`}>
-          <input className="form-control placeholder-shown"
-                 type="email"
-                 id="contact-email"
-                 name="email"
-                 ref="email"
-                 value={ this.state.input.email }
-                 onBlur={ this.handleBlur }
-                 onChange={ this.handleChange }
-                 required />
-          <label htmlFor="contact-email">Email</label>
-          <div className="error-message" id="email-error">{errors.email}</div>
-        </div>
-        <div className={`form-group ${shouldMarkError('emailConfirm') ? 'error' : ''}`}>
-          <input className="form-control placeholder-shown"
-                 type="email"
-                 id="contact-emailConfirm"
-                 name="emailConfirm"
-                 ref="emailConfirm"
-                 value={ this.state.input.emailConfirm }
-                 onBlur={ this.handleBlur }
-                 onChange={ this.handleChange }
-                 required />
-          <label htmlFor="contact-emailConfirm">Confirm Email</label>
-          <div className="error-message" id="emailConfirm-error">{errors.emailConfirm}</div>
-        </div>
-        <button className={`btn btn-primary btn-submit ${isDisabled && allTouched ? 'btn-error' : ''} ${success ? 'btn-success' : ''}`}
-                disabled={isDisabled}
-                onClick={ this.handleSubmit }>submit</button>
-        </div>
+        <ContactFormThankYou />
       </form>
     );
   }
