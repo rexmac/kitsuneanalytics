@@ -23,8 +23,12 @@
               transform 0.2s ease-in-out;
   transform: translateY(0);
 
-  &.hide {
+  &.hidden {
    transform: translateY(200%);
+  }
+
+  &.pinned {
+    /*bottom: calc(90px + 1rem);*/
   }
 
   &::before {

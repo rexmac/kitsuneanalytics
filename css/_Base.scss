@@ -170,7 +170,7 @@ main section {
   }
 }
 
-#services {
+.services {
   & .box {
     &::before { // icon in circle
       background-image: url('/img/graph.svg');
@@ -210,7 +210,7 @@ main section {
   }
 }
 
-#meet-the-team {
+.team {
   background-color: var(--kitsuneLightGray);
   position: relative;
 
@@ -328,7 +328,7 @@ main section {
   */
 }
 
-#contact {
+.contact {
   &::after {
     display: none;
   }

@@ -6,7 +6,7 @@ import styles from './SiteFooter.module.css';
 
 const pages = [
   { dest: 'services' },
-  { dest: 'meet-the-team', linkText: 'Meet the Team' },
+  { dest: 'team', linkText: 'Meet the Team' },
   { dest: 'contact' }
 ];
 
@@ -26,7 +26,7 @@ const SiteFooter = () =>
           const linkText = p.linkText || capitalize(p.dest);
           const target = p.dest
             ? p.dest.substr(0, 1) !== '/'
-              ? `/#${p.dest}`
+              ? `#${p.dest}`
               : `${p.dest}/`
             : '/';
           const linkElem = target.substr(0, 1) === '#'

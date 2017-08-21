@@ -16,6 +16,7 @@ function withLoader(WrappedComponent) {
   });
 }
 
+// @todo should only re-render if form has been modified
 class ContactForm extends React.Component {
   constructor(props) {
     super(props);
