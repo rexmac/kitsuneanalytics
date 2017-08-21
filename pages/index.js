@@ -9,7 +9,7 @@ import { configureAnchors } from 'react-scrollable-anchor'
 
 export default class Index extends React.Component {
   componentWillMount() {
-    configureAnchors({ offset: 0 });
+    configureAnchors({ offset: 1 });
   }
 
   render () {

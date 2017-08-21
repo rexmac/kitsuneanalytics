@@ -60,11 +60,11 @@ export default class BackToTop extends React.Component {
   }
 
   componentDidMount() {
-    //window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
-    //window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   scrollStep() {
@@ -83,13 +83,8 @@ export default class BackToTop extends React.Component {
     const renderStyle = [
       styles['backToTop'],
       this.state.hidden ? styles['hidden'] : ''
-      //this.state.pinned ? styles['pinned'] : ''
     ];
-    const footerHeight = 106;
     const currentScrollY = this.getScrollY();
-    // 1rem + currentScrollY - this.state.pinHeight
-    //console.log('render currentScrollY', currentScrollY);
-    //console.log('redner this.state.pinHeight', this.state.pinHeight);
 
     let inlineStyle = {};
     if (currentScrollY >= this.state.pinHeight) {
