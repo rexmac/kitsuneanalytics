@@ -1,7 +1,7 @@
 import React from 'react'
 import { prefixLink } from 'gatsby-helpers'
-import Bios from './Bios'
-import TeamCarousel from './TeamCarousel'
+import Bios from '../../Bios'
+import TeamCarousel from '../../TeamCarousel'
 
 const Team = () =>
   <section id="meet-the-team">

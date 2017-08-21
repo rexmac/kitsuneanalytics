@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router'
-import { prefixLink } from 'gatsby-helpers'
 import Helmet from 'react-helmet'
 import { config } from 'config'
-import Team from '../components/Team'
-import Hero from '../components/Hero'
-import Services from '../components/Services'
-import Contact from "../components/Contact";
+import Contact from '../components/pages/home/Contact';
+import Hero from '../components/pages/home/Hero'
+import Services from '../components/pages/home/Services'
+import Team from '../components/pages/home/Team'
 
 export default class Index extends React.Component {
   render () {
@@ -15,8 +13,8 @@ export default class Index extends React.Component {
         <Helmet
           title={config.siteTitle}
           meta={[
-            {"name": "description", "content": "Sample"},
-            {"name": "keywords", "content": "sample, something"},
+            {"name": "description", "content": "Kitsune Analytics"},
+            {"name": "keywords", "content": "analytics, consulting"},
           ]}
         />
 
@@ -27,6 +25,7 @@ export default class Index extends React.Component {
         <Team />
 
         <Contact />
+
       </div>
     )
   }

@@ -49,7 +49,7 @@ exports.postBuild = (pages, callback) => {
   //buildFeed(pages, callback);
 
   // Copy favicon.
-  fs.copySync(path.join(__dirname, '/favicon'), path.join(__dirname, '/public/favicon'));
+  //fs.copySync(path.join(__dirname, '/favicon'), path.join(__dirname, '/public/favicon'));
 
   // Next callback.
   callback();

@@ -1,4 +1,5 @@
 import React from 'react'
+import Alert from './Alert'
 import ContactFormThankYou from './ContactFormThankYou'
 import Loader from './Loader'
 
@@ -20,6 +21,8 @@ class ContactForm extends React.Component {
     super(props);
 
     this.state = {
+
+      // Form's field values
       input: {
         name: '',
         companyName: '',
@@ -28,9 +31,17 @@ class ContactForm extends React.Component {
         emailConfirm: '',
         comment: ''
       },
+
+      // Form's failed submission error message
+      error: '',
+
+      // Is the form currently "loading"? (i.e., is it submitting?)
       loading: false,
-      success: false,
+
+      // Has the form been submitted?
       submitted: false,
+
+      // Keep track of which form fields have been "touched" (i.e., received focus and then blurred)
       touched: {
         name: false,
         companyName: false,
@@ -38,7 +49,10 @@ class ContactForm extends React.Component {
         email: false,
         emailConfirm: false,
         comment: false
-      }
+      },
+
+      // Has the form been validated?
+      validated: false
     };
 
     this.handleBlur = this.handleBlur.bind(this);
@@ -46,12 +60,69 @@ class ContactForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  /**
+   * Handle form field blur events
+   *
+   * @param event
+   */
   handleBlur(event) {
+    // Flag this field as having been "touched"
     this.setState({
       touched: { ...this.state.touched, [event.target.name]: true }
     });
   };
 
+  /**
+   * Submit form data for processing
+   *
+   * @param formData
+   * @returns {Promise}
+   */
+  submitForm(formData) {
+    const url = 'https://script.google.com/macros/s/AKfycbxc6cWBmiOpM6yVwDr_RkmD2AxXkS8ZEcHsOvAYMMBPKD6OK6kA/exec';
+    //this.setState({ error: '' });
+
+    // Create new promise with the Promise() constructor;
+    // This has as its argument a function
+    // with two parameters, resolve and reject
+    return new Promise(function(resolve, reject) {
+      // Standard XHR to load an image
+      const request = new XMLHttpRequest();
+      request.open('POST', url);
+      //request.responseType = 'blob';
+      //xhr.withCredentials = true;
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      // When the request loads, check whether it was successful
+      request.onload = function() {
+        if (request.status === 200) {
+          // If successful, resolve the promise by passing back the request response
+          resolve(request.response);
+        } else {
+          // If it fails, reject the promise with a error message
+          reject(Error('Failed to submit form; error code:' + request.statusText));
+        }
+      };
+      request.onerror = function() {
+        // Also deal with the case when the entire request fails to begin with
+        // This is probably a network error, so reject the promise with an appropriate message
+        reject(Error('There was a network error.'));
+      };
+
+      // url encode form data for sending as post data
+      const encodedFormData = Object.keys(formData).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(formData[k])
+      }).join('&');
+
+      // Send the request
+      request.send(encodedFormData);
+    });
+  }
+
+  /**
+   * Handle form field change events
+   *
+   * @param event
+   */
   handleChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -59,20 +130,30 @@ class ContactForm extends React.Component {
     console.log('handleChange', {target, value, name});
 
     target.classList.add('active');
+
+    // If field has empty value, then show placeholder
     target.classList[value ? 'remove' : 'add']('placeholder-shown');
     console.log(target.classList);
 
+    // Store input's value in form's state
     this.setState({
       input: { ...this.state.input, [name]: value }
     });
-
-    //this.showInputError(name);
   }
 
+  /**
+   * Handle form submit event
+   *
+   * @param e
+   */
   handleSubmit(e) {
+    const that = this;
+
+    // Prevent default form submission logic (i.e., ignore the "action" attribute)
     e.preventDefault();
 
-    // Set touched=true for all fields
+    // Flag all fields as having been "touched", which has the intended side-effect of
+    // displaying validation errors for each field.
     this.setState({
       touched: {
         name: true,
@@ -86,17 +167,34 @@ class ContactForm extends React.Component {
 
     console.log('component state', JSON.stringify(this.state.input));
 
+    // Can the form be submitted? All required input is present and valid?
     if (!this.canBeSubmitted()) {
-      console.log('form is invalid: do not submit');
-      //return;
+      console.log('Form is invalid! :( Aborting submission.');
+      return;
     }
 
-    console.log('form is valid: submit');
-    this.setState({ success: true, loading: true });
-    //this.setState({ success: true });
-    //this.setState({ loading: true });
+    console.log('Form is valid. :) Proceeding with submission');
+    this.setState({ validated: true, loading: true });
 
     const formPayload = this.state.input;
+
+    // Submit form
+    this.submitForm(formPayload)
+      .then(() => {
+        // Hide form; replace with "Thank you" message
+        that.setState({ loading: false, submitted: true });
+      })
+      .catch((error) => {
+        // Show error to user
+        console.error(error);
+        that.setState({
+          loading: false,
+          submitted: false,
+          validated: false,
+          error: 'An error occurred while trying to submit the form. Please try again. If the error persists, then please email us at <a href="mailto:help@kitsuneanalytics.com">help@kitsuneanalytics.com</a>.'
+        });
+      });
+    /*
     // Fire off request to form processor
     const url = 'https://script.google.com/macros/s/AKfycbxc6cWBmiOpM6yVwDr_RkmD2AxXkS8ZEcHsOvAYMMBPKD6OK6kA/exec';
     const xhr = new XMLHttpRequest();
@@ -116,6 +214,7 @@ class ContactForm extends React.Component {
       return encodeURIComponent(k) + '=' + encodeURIComponent(formPayload[k])
     }).join('&');
     xhr.send(encoded);
+    */
   }
 
   /*
@@ -231,14 +330,16 @@ class ContactForm extends React.Component {
     const formHasErrors = Object.keys(errors).some(x => errors[x]);
     const allTouched = Object.keys(this.state.touched).every(x => this.state.touched[x]);
     const loading = this.state.loading;
-    const success = this.state.success;
+    const validated = this.state.validated;
     const submitted = this.state.submitted;
+    const submitError =  this.state.error;
     const formClassNames = [
       'collapsible-wrapper',
       loading ? 'loading' : '',
-      success ? 'success' : '',
+      validated ? 'validated' : '',
       formHasErrors ? '' : 'submittable',
-      submitted ? 'submitted collapsed' : ''
+      submitted ? 'submitted collapsed' : '',
+      submitError ? 'submitError' : ''
     ];
 
     const shouldMarkError = (field) => {
@@ -255,7 +356,11 @@ class ContactForm extends React.Component {
             onSubmit={ this.handleSubmit }
             noValidate
       >
+
         <Loader loading={loading} />
+
+        <Alert type="error" message={submitError} />
+
         <div className="collapsible">
           <div className={`form-group ${shouldMarkError('name') ? 'error' : ''}`}>
             <input className="form-control placeholder-shown"
@@ -334,11 +439,13 @@ class ContactForm extends React.Component {
             <label htmlFor="contact-comment">Comment</label>
             <div className="error-message" id="comment-error">{ errors.comment }</div>
           </div>
-          <button className={`btn btn-primary btn-submit ${formHasErrors && allTouched ? 'btn-error' : ''} ${success ? 'btn-success' : ''}`}
+          <button className={`btn btn-primary btn-submit ${formHasErrors && allTouched ? 'btn-error' : ''} ${validated ? 'btn-success' : ''}`}
                   onClick={ this.handleSubmit }
           >Submit</button>
         </div>
+
         <ContactFormThankYou />
+
       </form>
     );
   }

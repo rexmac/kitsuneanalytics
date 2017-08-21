@@ -1,6 +1,6 @@
 import React from 'react'
 import { prefixLink } from 'gatsby-helpers'
-import ContactForm from "./ContactForm";
+import ContactForm from "../../ContactForm";
 
 const Contact = () =>
   <section id="contact">

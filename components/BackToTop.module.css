@@ -1,0 +1,45 @@
+:root {
+  --bgColor: #404040;
+  --color: #808284;
+  --hoverColor: #f7991c;
+}
+
+/*.backToTop:active + main {
+  overflow-y: scroll;
+  height: 100vh;
+}*/
+
+.backToTop {
+  display: block;
+  position: fixed;
+  z-index: 99;
+  right: 1rem;
+  bottom: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color);
+  transition: color 0.3s linear,
+              transform 0.2s ease-in-out;
+  transform: translateY(0);
+
+  &.hide {
+   transform: translateY(200%);
+  }
+
+  &::before {
+    content: '➜';
+    transform: rotate(-90deg);
+    display: block;
+    /*position: relative;
+    /top: -2.25em;*/
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: var(--hoverColor);
+  }
+}

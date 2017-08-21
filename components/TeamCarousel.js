@@ -18,7 +18,7 @@ Through these techniques, she is able to exact information from large amounts of
   name: 'Dr. Katya Krieger-Redwood',
   title: 'Data Analyst and Research Consultant',
   href: '',
-  imgSrc: prefixLink('/img/team/rachel.jpg'),
+  imgSrc: prefixLink('/img/team/katya.jpg'),
   imgAlt: 'Dr. Katya Krieger-Redwood',
   desc: `Dr. Katya Krieger-Redwood is a research scientist with a background in both psychology and cognitive neuroscience. Her work has included development, design, analysis and dissemination of animal and human based research, including a variety of brain imaging techniques.
 
@@ -27,7 +27,7 @@ Dr. Krieger-Redwood prides herself on and enjoys in depth data analysis to ensur
   name: 'Dr. Sally Quinn',
   title: 'Data Analyst and Research Consultant',
   href: '',
-  imgSrc: prefixLink('/img/team/rachel.jpg'),
+  imgSrc: prefixLink('/img/team/sally.jpg'),
   imgAlt: 'Dr. Sally Quinn',
   desc: `Sally gained her PhD at the University of York which looked at Social Networking Site use in early adolescence. After completing her PhD, she is now an Associate Lecturer at the University of York teaching Social Psychology and Cyberpsychology. Her research interests lie in the social uses of technology with a particular focus on the positive uses of social media and mobile technology. She has published research on social media and wellbeing in adults and children, "textspeak" in computer-mediated communication, internet use among people with intellectual disabilities, and psychosocial outcomes of online gaming. Her work has appeared in the British Journal of Developmental Psychology, Computers in Human Behavior, and Cyberpsychology, Social Networking and Behavior.`
 }, {
@@ -46,7 +46,7 @@ Databases: MongoDB, Neo4j, SQL`
   name: 'Jimmy Trippier',
   title: 'Creative Consultant',
   href: '',
-  imgSrc: prefixLink('/img/team/rachel.jpg'),
+  imgSrc: prefixLink('/img/team/jimmy.jpg'),
   imgAlt: 'Jimmy Trippier',
   desc: `Jimmy Trippier is a Graphic Artist and Illustrator with over 8 years in creative and advertising industries. With a broad range of experience in almost all areas of visual communications and a work style that evolves with an ever-changing industry, his background covers a multitude of disciplines from traditional brand and print design to digital, illustration and larger art direction projects. 
 
