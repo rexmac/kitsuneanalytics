@@ -1,0 +1,69 @@
+#hero {
+  background: #f7991c;
+  color: white;
+  padding-top: 110px;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('../img/circles--white.png'), url('../img/circles--dotted--white.png');
+    background-repeat: no-repeat;
+    background-size: 80%, 100%;
+    background-position: 340px -325px, -163px -476px;
+    opacity: 0.25;
+  }
+
+  &::after { // vertical line connecting to next section
+    background-color: white;
+  }
+
+  .design-star {
+    &::before { // circle
+      background-color: white;
+    }
+
+    &::after { // right half of bottom border
+      background: white;
+    }
+  }
+
+  .box {
+    margin-top: 2em;
+    border-color: white;
+
+    &::after { // left half of bottom border
+      background-color: white;
+    }
+  }
+
+  & h1 {
+    margin-top: 1em;
+    font-size: 1.5rem;
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    line-height: 1.3em;
+    text-transform: uppercase;
+
+    & strong {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+
+  & h2 {
+    color: white;
+  }
+}
+
+img.logo {
+  margin: 0 1em 0 0;
+  filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=1, OffY=1, Color='#EEE')";
+  filter: url(#drop-shadow);
+  -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+}
