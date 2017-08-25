@@ -1,7 +1,18 @@
 #hero {
   background: #f7991c;
   color: white;
-  padding-top: 110px;
+
+  @media (--expanded-nav) {
+    padding-top: 110px;
+  }
+
+  & .branding {
+    display: none;
+
+    @media (--expanded-nav) {
+      display: block;
+    }
+  }
 
   &::before {
     content: "";
@@ -18,16 +29,19 @@
     opacity: 0.25;
   }
 
-  &::after { // vertical line connecting to next section
+  // vertical line connecting to next section
+  &::after {
     background-color: white;
   }
 
   .design-star {
-    &::before { // circle
+    // circle
+    &::before {
       background-color: white;
     }
 
-    &::after { // right half of bottom border
+    // right half of bottom border
+    &::after {
       background: white;
     }
   }
@@ -36,7 +50,8 @@
     margin-top: 2em;
     border-color: white;
 
-    &::after { // left half of bottom border
+    // left half of bottom border
+    &::after {
       background-color: white;
     }
   }

@@ -26,7 +26,7 @@ function withLoader(WrappedComponent) {
  * @returns {Promise}
  */
 function submitForm(formData) {
-  const url = 'https://script.google.com/macros/s/AKfycbxc6cWBmiOpM6yVwDr_RkmD2AxXkS8ZEcHsOvAYMMBPKD6OK6kA/exec';
+  const url = 'https://script.google.com/macros/s/AKfycbxPn3hDmkkdrpJaj5MVYTqqkLxCaqTXbgSJ3xvIK39t-mHqHXqs/exec';
   // this.setState({ error: '' });
 
   // Create new promise with the Promise() constructor;

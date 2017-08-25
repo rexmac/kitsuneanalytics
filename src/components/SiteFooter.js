@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby-link';
 import capitalize from 'lodash/capitalize';
-import styles from './SiteFooter.module.css';
+import styles from './SiteFooter.module.scss';
 import logo from '../img/logo--kitsune--white.svg';
 
 const pages = [

@@ -1,24 +1,31 @@
+@custom-media --two-column-form (min-width: 33em);
+
 #contact-form {
   display: flex;
   flex-flow: column nowrap;
   position: relative;
 
   .collapsible {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    @media (--two-column-form) {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
   }
 
   div.form-group {
     position: relative;
-    width: 50%;
-    max-width: 25em;
     margin: 0 0 1em;
 
-    &:first-child,
-    &:last-of-type {
-      width: 100%;
-      max-width: initial;//50em;
+    @media (--two-column-form) {
+      width: 49%;
+      max-width: 25em;
+
+      &:first-child,
+      &:last-of-type {
+        width: 100%;
+        max-width: initial;//50em;
+      }
     }
 
     input,
@@ -80,9 +87,6 @@
       opacity: 1;
       transition: opacity 0.6s linear;
     }
-  }
-
-  &.validated {
   }
 
   &.submitted {

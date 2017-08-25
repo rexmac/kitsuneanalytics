@@ -12,7 +12,7 @@ const Hero = () => (
         Bespoke data and analytic solutions
       </h2>
       <p>Kitsune Analytics developed from a shared desire to create more transparent links between science, society, and
-        industry at large. As all former or current academics, the experts at Kitsue Analytics share a passion for developing
+        industry at large. As all former or current academics, the experts at Kitsune Analytics share a passion for developing
         projects that bring tangible results, inform change, and generate a greater understanding of the products and
         services that we use every day.</p>
       <p>At Kitsune Analytics, all of our analysts hold a research-based PhD from various scientific fields. As such, we can

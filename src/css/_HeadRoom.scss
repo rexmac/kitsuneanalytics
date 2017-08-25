@@ -1,5 +1,11 @@
+@custom-media --expanded-nav (min-width: 60em);
+
 .headroom-wrapper {
-  height: 90px !important;
+  height: 52px !important;
+
+  @media (--expanded-nav) {
+    height: 90px !important;
+  }
 
   a {
     border-bottom: none;

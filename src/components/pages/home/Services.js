@@ -25,12 +25,12 @@ const Services = () => (
           as a
           range of other improvement measures!).</p>
         <p>We can tackle virtually any question, but our clients typically fall into one of two categories:<br />
-          <strong>Demographic Analysis</strong> or <strong>Performance Analysis</strong>.
+          <a href="#services__demographic-analysis"><strong>Demographic Analysis</strong></a> or <a href="#services__performance-analysis"><strong>Performance Analysis</strong></a>.
         </p>
 
         <div className="uberlist-container">
           <div className="uberlist">
-            <h3 className="title">Demographic Analysis</h3>
+            <h3 className="title" id="services__demographic-analysis">Demographic Analysis</h3>
             <p>If you are interested in a demographic analysis of your application and/or service, you are seeking
               answers to questions such as these:</p>
             <ul>
@@ -44,7 +44,7 @@ const Services = () => (
           </div>
 
           <div className="uberlist">
-            <h3 className="title">Performance Analysis</h3>
+            <h3 className="title" id="services__performance-analysis">Performance Analysis</h3>
             <p>If you are interested in a performance analysis, you are seeking answers to questions such as
               these:</p>
             <ul>

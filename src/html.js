@@ -10,7 +10,7 @@ const Html = (props) => {
   let css;
   if (process.env.NODE_ENV === 'production') {
     // eslint-disable-next-line global-require, import/no-webpack-loader-syntax, import/no-unresolved
-    css = <style dangerouslySetInnerHTML={{ __html: require('!raw!./public/styles.css') }} />
+    css = <style dangerouslySetInnerHTML={{ __html: require('!raw!../public/styles.css') }} />
   }
 
   return (

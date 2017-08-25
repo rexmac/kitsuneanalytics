@@ -2,13 +2,13 @@ module.exports = {
   //blogPostDir: "sample-posts", // The name of directory that contains your posts.
   siteTitle: "Kitsune Analytics", // Site title.
   siteTitleAlt: "Kitsune Analytics, LLC", // Alternative site title for SEO.
-  siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
+  siteLogo: "./img/logo--kitsune--opengraph.png", // Logo used for SEO and manifest.
   siteUrl: "https://kitsuneanalytics.com", // Domain of your website without pathPrefix.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-material-starter/.
   siteDescription: "A GatsbyJS stater with Material design in mind.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
-  siteFBAppID: "xxxxxxxxxxxxxxxx", // FB Application ID for using app insights
-  siteGATrackingID: "UA-xxxxxxxx-1", // Tracking code ID for google analytics.
+  siteFBAppID: "", // FB Application ID for using app insights
+  siteGATrackingID: "UA-105181117-1", // Tracking code ID for google analytics.
   themeColor: "#f7991c", // Used for setting manifest and progress theme colors.
   backgroundColor: "#808284", // Used for setting manifest background color.
   //disqusShortname: "https-vagr9k-github-io-gatsby-material-starter", // Disqus shortname.

@@ -4,6 +4,23 @@
   --kitsuneLightGray: #e6e7e8;
 }
 
+@custom-media --expanded-nav (min-width: 60em);
+@custom-media --two-column-form (min-width: 33em);
+
+body {
+  overflow-x: hidden;
+}
+
+.sr-only {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
 a {
   color: var(--kitsuneOrange);
   transition: color 0.3s;
@@ -21,19 +38,27 @@ main section {
   align-items: center;
   position: relative;
   text-align: center;
-  padding-top: 110px;
+  padding: 1.875em 1.5rem 0;
   color: var(--kitsuneGray);
+
+  @media (--expanded-nav) {
+    padding: 6.875em 0 0;
+  }
 
   // vertical line "connecting" to previous section
   &::before {
     content: '';
-    display: block;
+    display: none;
     position: absolute;
     left: 50%;
     top: 0;
-    height: 20.33333em;
+    height: 20.33333em;;
     border-left: 2px solid var(--kitsuneLightGray);
     margin-left: -1px;
+
+    @media (--expanded-nav) {
+      display: block;
+    }
   }
 
   &:first-child {
@@ -46,7 +71,7 @@ main section {
   // vertical line connecting to next section
   &::after {
     content: '';
-    display: block;
+    display: none;
     width: 2px;
     height: 9.575em;
     position: absolute;
@@ -54,9 +79,19 @@ main section {
     left: 50%;
     margin-left: -1px;
     background-color: var(--kitsuneLightGray);
+
+    @media (--expanded-nav) {
+      display: block;
+    }
   }
 
   .design-star {
+    display: none;
+
+    @media (--expanded-nav) {
+      display: block;
+    }
+
     // circle
     &::before {
       content: '';
@@ -85,52 +120,80 @@ main section {
   }
 
   & h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 300;
+
+    @media (--expanded-nav) {
+      font-size: 2rem;
+    }
   }
 
   & p {
     text-align: justify;
-    text-align-last: center;
+    text-align-last: left;
+
+    @media (--expanded-nav) {
+      text-align-last: center;
+    }
   }
 
   & .box {
     position: relative;
-    margin: 12.75em 0 9em;
-    max-width: 60rem;
-    font-size: 1.05rem;
+    margin: 2em 0 3.625rem;
+    padding: 0;
+    max-width: 100%;
+    font-size: 0.875rem;
     line-height: 1.4775;
-    border: 2px solid var(--kitsuneLightGray);
-    border-bottom-width: 0;
-    padding: 3em 3em 1em;
+
+    @media (--expanded-nav) {
+      max-width: 60rem;
+      margin: 12.75em 0 9.575em;
+      padding: 3em 3em 1em;
+      font-size: 1.05rem;
+      border: 2px solid var(--kitsuneLightGray);
+      border-bottom-width: 0;
+    }
 
     // icon in circle
     &::before {
       content: '';
       display: block;
-      width: 162px;
-      height: 162px;
+      width: 100px;
+      height: 100px;
       //margin-top: -244px;
-      margin-bottom: 4em;
+      //margin-bottom: 4em;
       position: absolute;
-      top: -192px;
+      top: -108px; //calc(-1 * 30px + 28px + 100px/2); // -1 * section top-padding + .box top-margin + half my height
       left: 50%;
-      margin-left: -81px;
+      margin-left: -50px;
       background: var(--kitsuneLightGray) no-repeat center center;
-      background-size: 89px;
+      background-size: 60px;
       border-radius: 50%;
+
+      @media (--expanded-nav) {
+        width: 162px;
+        height: 162px;
+        top: -192px;
+        margin-bottom: 4em;
+        margin-left: -81px;
+        background-size: 89px;
+      }
     }
 
     // left half of bottom border
     &::after {
       content: '';
-      display: block;
+      display: none;
       width: 50%;
       height: 2px;
       position: absolute;
       bottom: 0;
       left: 0;
       background-color: var(--kitsuneLightGray);
+
+      @media (--expanded-nav) {
+        display: block;
+      }
     }
 
     & > :last-child {
@@ -148,30 +211,37 @@ main section {
 
   & .split-list {
     position: relative;
-    column-count: 2;
-    column-gap: 4em;
     margin-left: 0;
 
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 2px;
-      height: 100%;
-      background-color: var(--kitsuneLightGray);
-      margin-left: -1px;
+    @media (--expanded-nav) {
+      column-count: 2;
+      column-gap: 4em;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        background-color: var(--kitsuneLightGray);
+        margin-left: -1px;
+      }
     }
   }
 
   & .excerpt {
     margin: 0;
-    padding: 2em 9em;
+    padding: 2em 0;
     border-style: solid;
     border-color: var(--kitsuneLightGray);
     border-width: 1px 0;
+
+    @media (--expanded-nav) {
+      padding: 2em 9em;
+    }
   }
 }
 
@@ -188,30 +258,37 @@ main section {
   }
 
   & .uberlist-container {
-    display: flex;
-    flex-flow: row wrap;
     margin: 3em 0 0;
 
-    .uberlist {
-      width: 50%;
+    @media (--expanded-nav) {
+      display: flex;
+      flex-flow: row wrap;
 
-      &:nth-child(even) {
-        padding-left: 2em;
-        border-left: 2px solid var(--kitsuneLightGray);
-      }
+      .uberlist {
+        width: 50%;
 
-      &:nth-child(odd) {
-        padding-right: 2em;
+        &:nth-child(even) {
+          padding-left: 2em;
+          border-left: 2px solid var(--kitsuneLightGray);
+        }
+
+        &:nth-child(odd) {
+          padding-right: 2em;
+        }
       }
     }
   }
 
   .next-step {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 300;
     margin: 1em 0;
     padding: 1em 0 0;
     border-top: 1px solid var(--kitsuneLightGray);
+
+    @media (--expanded-nav) {
+      font-size: 2em;
+    }
   }
 }
 
@@ -262,7 +339,13 @@ main section {
     // icon in circle
     &::before {
       background-image: url('../img/team.svg');
-      background-size: 120px;
+      background-size: 75px;
+      border: 1px solid #e6e7e8;
+
+      @media (--expanded-nav) {
+        background-size: 120px;
+        border: none;
+      }
     }
   }
 
@@ -289,13 +372,24 @@ main section {
   }
 
   & .box {
+    width: 100%;
     border-top-width: 0;
     border-bottom-width: 2px;
+
+    @media (--two-column-form) {
+      width: auto;
+    }
 
     // icon in circle
     &::before {
       background-image: url('../img/contact.svg');
-      background-size: 75px;
+      background-size: 50px;
+      border: 1px solid white;
+
+      @media (--expanded-nav) {
+        background-size: 75px;
+        border: none;
+      }
     }
 
     // top-right border

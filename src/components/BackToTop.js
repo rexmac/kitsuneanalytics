@@ -6,6 +6,10 @@ import styles from './BackToTop.module.css';
 
 
 function getScrollY() {
+  if (typeof window === 'undefined') {
+    return 0;
+  }
+
   if (window.pageYOffset !== undefined) {
     return window.pageYOffset;
   } else if (window.scrollTop !== undefined) {

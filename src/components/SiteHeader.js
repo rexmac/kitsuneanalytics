@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import capitalize from 'lodash/capitalize';
-import styles from './SiteHeader.module.css';
+import styles from './SiteHeader.module.scss';
 import logo from '../img/logo--kitsune--white.svg';
 
 const pages = [
@@ -22,12 +22,21 @@ const SiteHeader = () => (
       />
       <div className={styles['name-title']}>
         <Link to='/'>
-          <strong>Kitsune</strong>Analytics
+          <strong>Kitsune</strong><br />Analytics
         </Link>
       </div>
     </aside>
-    <nav className={styles['site-nav']}>
-      <ul>
+    <nav className={styles['site-nav']} role="navigation">
+      <input className={styles.trigger} type="checkbox" id="mainNavButton" />
+      <label htmlFor="mainNavButton">
+        <span className="sr-only">Menu</span>
+        <div className={styles.hamburger}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </label>
+      <ul className={styles.menu}>
         {pages.map((p) => {
           const linkText = p.linkText || capitalize(p.dest);
           // eslint-disable-next-line no-nested-ternary
