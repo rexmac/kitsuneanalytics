@@ -1,6 +1,7 @@
 @custom-media --expanded-nav (min-width: 60em);
 
 .headroom-wrapper {
+  position: relative;
   height: 52px !important;
 
   @media (--expanded-nav) {

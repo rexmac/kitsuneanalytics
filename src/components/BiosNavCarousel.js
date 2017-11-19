@@ -17,7 +17,7 @@ class BiosNavCarousel extends React.Component {
       accessibility: true,
       arrows: false,
       beforeChange: (currentSlide, nextSlide) => {
-        console.log('beforeChange', currentSlide, nextSlide);
+        //console.log('beforeChange', currentSlide, nextSlide);
         this.handleChange(nextSlide);
       },
       centerMode: true,
@@ -27,6 +27,20 @@ class BiosNavCarousel extends React.Component {
       //dots: false,
       //fade: true,
       //infinite: false,
+      responsive: [{
+        breakpoint: 768,
+        settings: {
+          arrows: true,
+          centerPadding: '32px',
+          slidesToShow: 3
+        }
+      },{
+        breakpoint: 660,
+        settings: {
+          arrows: true,
+          slidesToShow: 1
+        }
+      }],
       speed: 600,
       slickGoTo: currentSlideIndex,
       slidesToShow: 5
@@ -48,4 +62,4 @@ class BiosNavCarousel extends React.Component {
   }
 }
 
-export default BiosNavCarousel
+export default BiosNavCarousel;

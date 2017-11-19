@@ -4,6 +4,8 @@
   --hoverColor: #f7991c;
 }
 
+@custom-media --expanded-nav (min-width: 60em);
+
 /*.backToTop:active + main {
   overflow-y: scroll;
   height: 100vh;
@@ -13,18 +15,31 @@
   display: block;
   position: fixed;
   z-index: 99;
-  right: 1rem;
+  right: -0.25rem;
   bottom: 1rem;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--color);
-  transition: color 0.3s linear,
-              transform 0.2s ease-in-out;
+  transition:
+    color 0.3s linear,
+    transform 0.2s ease-in-out;
   transform: translateY(0);
 
+  @media (--expanded-nav) {
+    right: 1rem;
+  }
+
+  span {
+    display: none;
+
+    @media (--expanded-nav) {
+      display: inline;
+    }
+  }
+
   &.hidden {
-   transform: translateY(200%);
+    transform: translateY(200%);
   }
 
   &.pinned {

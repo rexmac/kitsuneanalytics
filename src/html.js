@@ -29,6 +29,8 @@ const Html = (props) => {
         {css}
       </head>
       <body>
+        <div className="overlay" />
+
         <div id="___gatsby" dangerouslySetInnerHTML={{ __html: props.body }} />
 
         <svg height="0" style={{ display: 'block' }} xmlns="http://www.w3.org/2000/svg">
