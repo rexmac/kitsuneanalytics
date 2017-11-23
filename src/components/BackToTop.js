@@ -1,7 +1,7 @@
 import React from 'react';
 import raf from 'raf';
 import PropTypes from 'prop-types';
-import jump from 'jump.js';
+import Scroll from 'react-scroll';
 import styles from './BackToTop.module.scss';
 
 
@@ -77,7 +77,7 @@ class BackToTop extends React.Component {
     const inlineStyle = {};
     if (currentScrollY >= this.state.pinHeight) {
       inlineStyle.bottom = 'auto';
-      inlineStyle.top = document.documentElement.clientHeight - (currentScrollY - this.state.pinHeight) - 38;//56;
+      inlineStyle.top = document.documentElement.clientHeight - (currentScrollY - this.state.pinHeight) - 56; // 38;
     } else {
       inlineStyle.bottom = '1rem';
       inlineStyle.top = 'auto';
@@ -87,7 +87,7 @@ class BackToTop extends React.Component {
       <button
         className={renderStyle.join(' ')}
         style={inlineStyle}
-        onClick={() => {jump('.headroom-wrapper', {duration: 300})}}
+        onClick={Scroll.animateScroll.scrollToTop}
       ><span>Back to top</span></button>
     );
   }

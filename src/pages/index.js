@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import graphql from 'graphql';
-import { configureAnchors } from 'react-scrollable-anchor';
 import Contact from '../components/pages/home/Contact';
 import Hero from '../components/pages/home/Hero';
 import Services from '../components/pages/home/Services';
@@ -11,7 +10,6 @@ import SEO from '../components/SEO/SEO';
 
 class Index extends React.Component {
   componentWillMount() {
-    configureAnchors({ offset: 1 });
   }
 
   render () {

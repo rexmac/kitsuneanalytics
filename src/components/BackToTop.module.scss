@@ -6,10 +6,10 @@
 
 @custom-media --expanded-nav (min-width: 60em);
 
-/*.backToTop:active + main {
+/* .backToTop:active + main {
   overflow-y: scroll;
   height: 100vh;
-}*/
+} */
 
 .backToTop {
   display: block;
@@ -19,6 +19,7 @@
   bottom: 1rem;
   background: none;
   border: none;
+  padding: 0;
   cursor: pointer;
   color: var(--color);
   transition:
@@ -27,7 +28,7 @@
   transform: translateY(0);
 
   @media (--expanded-nav) {
-    right: 1rem;
+    right: 2.5rem;
   }
 
   span {
@@ -43,15 +44,15 @@
   }
 
   &.pinned {
-    /*bottom: calc(90px + 1rem);*/
+    //bottom: calc(90px + 1rem);
   }
 
   &::before {
     content: '➜';
     transform: rotate(-90deg);
     display: block;
-    /*position: relative;
-    /top: -2.25em;*/
+    //position: relative;
+    //top: -2.25em;
   }
 
   &:focus {

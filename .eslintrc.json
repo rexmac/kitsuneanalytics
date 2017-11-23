@@ -9,6 +9,7 @@
     }
   },
   "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": "warn",
     "react/prop-types": "warn",
     "react/no-danger": "warn"

@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import capitalize from 'lodash/capitalize';
+import Scroll from 'react-scroll'; // Imports all Mixins
+// import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 import styles from './Nav.module.scss';
 
 const pages = [
@@ -18,7 +20,18 @@ class Nav extends React.Component {
       scrollPosition: 0
     };
 
+    this.handleNavClickEvent = this.handleNavClickEvent.bind(this);
     this.handleToggleEvent = this.handleToggleEvent.bind(this);
+  }
+
+  handleNavClickEvent() {
+    this.setState({
+      expanded: false
+    });
+
+    // Custom scroll logic here to scroll to *top* of page anchor element
+    // as some browsers will not scroll at all if even a sliver of the element
+    // is still in view at top of page.
   }
 
   handleToggleEvent() {
@@ -31,7 +44,17 @@ class Nav extends React.Component {
   render() {
     const expanded = this.state.expanded;
     const scrollPosition = this.state.scrollPosition;
-    document.body.classList.toggle('has-overlay', expanded);
+    console.log('Nav.js expanded', expanded);
+
+    // When dropping support for IE11, replace the if block below with the single line, two-argument toggle:
+    //   document.body.classList.toggle('has-overlay', expanded);
+    if (document.body.classList.contains('has-overlay')) {
+      if (! expanded) {
+        document.body.classList.remove('has-overlay');
+      }
+    } else if (expanded) {
+      document.body.classList.add('has-overlay');
+    }
 
     /*
     if (expanded) {
@@ -41,7 +64,7 @@ class Nav extends React.Component {
       // document.body.classList.remove('show-overlay');
       window.scrollTo(0, scrollPosition);
       document.body.style.top = 0;
-    }*/
+    } */
 
     return (
       <nav className={styles['site-nav']}>
@@ -71,7 +94,7 @@ class Nav extends React.Component {
                 : `${p.dest}/`
               : '/';
             const linkElem = target.substr(0, 1) === '#'
-              ? <a href={target} onClick={this.handleToggleEvent}>{linkText}</a>
+              ? <Scroll.Link to={target.substr(1)} spy smooth duration={500}>{linkText}</Scroll.Link>
               : <Link to={target}>{linkText}</Link>;
             return <li key={target}>{linkElem}</li>
           })}
@@ -79,6 +102,8 @@ class Nav extends React.Component {
       </nav>
     )
   }
+  // <a href={target} onClick={this.handleNavClickEvent}>{linkText}</a>
+  // <a href={target} onClick={this.handleToggleEvent}>{linkText}</a>
 }
 
 export default Nav;

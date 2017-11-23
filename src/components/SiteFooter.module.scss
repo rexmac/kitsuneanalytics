@@ -28,8 +28,9 @@
   }
 
   & nav {
-    max-width: 45%;
+    width: 45%;
     flex-grow: 1;
+    padding-left: 2rem;
 
     & ul {
       display: block;
@@ -55,7 +56,7 @@
 
 .copyright {
   font-size: 0.75rem;
-  max-width: 45%;
+  width: 45%;
   flex-grow: 1;
 
   @media (--expanded-nav) {
