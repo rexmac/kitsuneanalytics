@@ -112,13 +112,14 @@
     list-style-type: none;
     margin: 0;
     padding: 0.5em 1em;
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 
     @media (--expanded-nav) {
       margin-left: 4em;
       padding: 0;
-      opacity: 0.5;
+      opacity: 0.75;
       transition: opacity 0.3s;
 
       &:first-child {

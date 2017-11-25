@@ -1,17 +1,10 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import capitalize from 'lodash/capitalize';
 import Nav from './Nav';
 import styles from './SiteHeader.module.scss';
 import logo from '../img/logo--kitsune--white.svg';
 
-const pages = [
-  { dest: 'services' },
-  { dest: 'team', linkText: 'Meet the Team' },
-  { dest: 'contact' }
-];
-
-const SiteHeader = () => (
+const SiteHeader = (props) => (
   <header className={styles['site-header']}>
     <aside className={styles.branding}>
       <img
@@ -27,7 +20,7 @@ const SiteHeader = () => (
         </Link>
       </div>
     </aside>
-    <Nav />
+    <Nav headroomRef={props.headroomRef} />
   </header>
 );
 

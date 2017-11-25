@@ -50,6 +50,10 @@
     margin-top: 2em;
     border-color: white;
 
+    &::before {
+      display: none;
+    }
+
     // left half of bottom border
     &::after {
       background-color: white;

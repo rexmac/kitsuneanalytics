@@ -17,10 +17,6 @@ class Index extends React.Component {
       <div>
         <Helmet
           title={this.props.data.site.siteMetadata.rssMetadata.title}
-          meta={[
-            {"name": "description", "content": "Kitsune Analytics"},
-            {"name": "keywords", "content": "analytics, consulting"},
-          ]}
         >
           <title>{this.props.data.site.siteMetadata.rssMetadata.title}</title>
           <link rel="canonical" href={`${this.props.data.site.siteMetadata.siteUrl}`} />

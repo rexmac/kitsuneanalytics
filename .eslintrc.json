@@ -9,10 +9,16 @@
     }
   },
   "rules": {
+    "prefer-destructuring": ["error", {
+      "AssignmentExpression": {
+        "object": false
+      }
+    }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": "warn",
     "react/prop-types": "warn",
-    "react/no-danger": "warn"
+    "react/no-danger": "warn",
+    "react/no-did-mount-set-state": [false, "allow-in-func"]
   },
   "settings": {
     "import/core-modules": []

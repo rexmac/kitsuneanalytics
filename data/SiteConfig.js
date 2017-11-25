@@ -5,7 +5,7 @@ module.exports = {
   siteLogo: "./img/logo--kitsune--opengraph.png", // Logo used for SEO and manifest.
   siteUrl: "https://kitsuneanalytics.com", // Domain of your website without pathPrefix.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-material-starter/.
-  siteDescription: "A GatsbyJS stater with Material design in mind.", // Website description used for RSS feeds/meta description tag.
+  siteDescription: "Bespoke data and analytics solutions", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteFBAppID: "", // FB Application ID for using app insights
   siteGATrackingID: "UA-105181117-1", // Tracking code ID for google analytics.

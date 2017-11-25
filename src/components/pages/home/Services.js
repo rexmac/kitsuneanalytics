@@ -4,16 +4,15 @@ const Services = () => (
   <section className="services" id="services">
     <div className="box">
       <h2>What we do</h2>
-      <p>Kitsune Analytics is a comprehensive consulting, analytics, and design firm with a focus on user
-        research. Using
-        data-driven techniques, the scientists at Kitsune Analytics will provide the insights you need about your
-        the users
-        of your products and services. From the initial consultation, to the development a data and analysis
-        framework, to
-        the presentation of the final reports, we will provide a customized plan to suit your needs and see your
-        project
-        through from start to finish.</p>
-      <p>We are not a simple market research or analytics firm - we are the best of both worlds! Because we employ
+      <p>
+        Kitsune Analytics is a comprehensive consulting, analytics, and design firm with a focus on user
+        research. Using data-driven techniques, the scientists at Kitsune Analytics will provide the insights you need about your
+        the users of your products and services. From the initial consultation, to the development a data and analysis
+        framework, to the presentation of the final reports, we will provide a customized plan to suit your needs and see your
+        project through from start to finish.
+      </p>
+      <p>
+        We are not a simple market research or analytics firm - we are the best of both worlds! Because we employ
         a team
         of research scientists, psychologists, programmers, and data analysts, we are able to make data-driven
         insights
@@ -21,16 +20,20 @@ const Services = () => (
         what
         strategies need to be employed to improve performance, likeability, retention, and increased use (as well
         as a
-        range of other improvement measures!).</p>
-      <p>We can tackle virtually any question, but our clients typically fall into one of two categories:<br />
+        range of other improvement measures!).
+      </p>
+      <p>
+        We can tackle virtually any question, but our clients typically fall into one of two categories:<br />
         <a href="#services__demographic-analysis"><strong>Demographic Analysis</strong></a> or <a href="#services__performance-analysis"><strong>Performance Analysis</strong></a>.
       </p>
 
       <div className="uberlist-container">
         <div className="uberlist">
           <h3 className="title" id="services__demographic-analysis">Demographic Analysis</h3>
-          <p>If you are interested in a demographic analysis of your application and/or service, you are seeking
-            answers to questions such as these:</p>
+          <p>
+            If you are interested in a demographic analysis of your application and/or service, you are seeking
+            answers to questions such as these:
+          </p>
           <ul>
             <li>What are the spending patterns of the users of my service?</li>
             <li>What kind of people are using my application/service? How old are they?</li>
@@ -43,11 +46,12 @@ const Services = () => (
 
         <div className="uberlist">
           <h3 className="title" id="services__performance-analysis">Performance Analysis</h3>
-          <p>If you are interested in a performance analysis, you are seeking answers to questions such as
-            these:</p>
+          <p>
+            If you are interested in a performance analysis, you are seeking answers to questions such as these:
+          </p>
           <ul>
-            <li>What features of my application/service do the users like best and what do they dislike the
-              most?
+            <li>
+              What features of my application/service do the users like best and what do they dislike the most?
             </li>
             <li>What kinds of changes would they like to see to my application/service?</li>
             <li>How can I optimize my application/service?</li>
@@ -55,8 +59,9 @@ const Services = () => (
         </div>
       </div>
 
-      <p className="excerpt">Are the questions you want answered not listed above? Or are you not even sure what
-        questions it is you want to ask? We can help with that!</p>
+      <p className="excerpt">
+        Are the questions you want answered not listed above? Or are you not even sure what questions it is you want to ask? We can help with that!
+      </p>
 
       <h2>Services</h2>
       <p>Our most popular services include:</p>
