@@ -13,6 +13,7 @@
     "gatsby-plugin-postcss-sass": "^1.0.13",
     "gatsby-plugin-react-helmet": "^2.0.1",
     "gatsby-plugin-typography": "^1.7.10",
+    "graphql": "^0.11.7",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
     "normalize.css": "^7.0.0",
@@ -57,7 +58,7 @@
     "publish:gh": "gh-pages -d public -r 'git@github.com:kitsuneanalytics/kitsuneanalytics.github.io.git' -b master",
     "deploy": "npm run build:gh",
     "clean": "rm -rf public",
-    "lint:js": "eslint --ext .js,.jsx --ignore-pattern public,static .",
+    "lint:js": "eslint --ext .js,.jsx .",
     "lint:md": "remark content/posts/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write"

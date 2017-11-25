@@ -9,7 +9,12 @@
     }
   },
   "rules": {
-    "prefer-destructuring": ["error", {
+    "jsx-a11y/label-has-for": [ "error", {
+      "required": {
+        "every": [ "id" ]
+      }
+    }],
+    "prefer-destructuring": [ "error", {
       "AssignmentExpression": {
         "object": false
       }
@@ -18,7 +23,7 @@
     "react/prefer-stateless-function": "warn",
     "react/prop-types": "warn",
     "react/no-danger": "warn",
-    "react/no-did-mount-set-state": [false, "allow-in-func"]
+    "react/no-did-mount-set-state": [0]
   },
   "settings": {
     "import/core-modules": []

@@ -1,5 +1,5 @@
 module.exports = {
-  //blogPostDir: "sample-posts", // The name of directory that contains your posts.
+  // blogPostDir: "sample-posts", // The name of directory that contains your posts.
   siteTitle: "Kitsune Analytics", // Site title.
   siteTitleAlt: "Kitsune Analytics, LLC", // Alternative site title for SEO.
   siteLogo: "./img/logo--kitsune--opengraph.png", // Logo used for SEO and manifest.
@@ -11,9 +11,9 @@ module.exports = {
   siteGATrackingID: "UA-105181117-1", // Tracking code ID for google analytics.
   themeColor: "#f7991c", // Used for setting manifest and progress theme colors.
   backgroundColor: "#808284", // Used for setting manifest background color.
-  //disqusShortname: "https-vagr9k-github-io-gatsby-material-starter", // Disqus shortname.
-  //postDefaultCategoryID: "Tech", // Default category for posts.
-  /*userName: "Material User", // Username to display in the author segment.
+  // disqusShortname: "https-vagr9k-github-io-gatsby-material-starter", // Disqus shortname.
+  // postDefaultCategoryID: "Tech", // Default category for posts.
+  /* userName: "Material User", // Username to display in the author segment.
   userTwitter: "", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "North Pole, Earth", // User location to display in the author segment.
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
@@ -36,6 +36,6 @@ module.exports = {
       url: "mailto:vagr9k@gmail.com",
       iconClassName: "fa fa-envelope"
     }
-  ],*/
+  ], */
   copyright: "© 2017 Kitsune Analytics, LLC" // Copyright string for the footer of the website and RSS feed.
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Headroom from 'react-headroom';
 import Link from 'gatsby-link';
 import Nav from './Nav';
 import styles from './SiteHeader.module.scss';
@@ -15,7 +17,7 @@ const SiteHeader = (props) => (
         alt="Kitsune Analytics logo"
       />
       <div className={styles['name-title']}>
-        <Link to='/'>
+        <Link to='/' href>
           <strong>Kitsune</strong><br />Analytics
         </Link>
       </div>
@@ -23,5 +25,9 @@ const SiteHeader = (props) => (
     <Nav headroomRef={props.headroomRef} />
   </header>
 );
+
+SiteHeader.propTypes = {
+  headroomRef: PropTypes.instanceOf(Headroom).isRequired
+};
 
 export default SiteHeader;

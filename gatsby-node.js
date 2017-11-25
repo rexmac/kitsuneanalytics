@@ -1,6 +1,6 @@
-var fs = require('fs-extra');
-var path = require('path');
-//var buildFeed = require('./scripts/buildFeed');
+// const fs = require('fs-extra');
+// const path = require('path');
+// var buildFeed = require('./scripts/buildFeed');
 
 /*
 import ExtractTextPlugin from 'extract-text-webpack-plugin';

@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Alert from './Alert';
+// import FormGroup from './forms/FormGroup';
 import ContactFormThankYou from './ContactFormThankYou';
 import Loader from './Loader';
 
@@ -70,6 +71,8 @@ class ContactForm extends React.Component {
   constructor(props) {
     super(props);
 
+    this.fieldRefs = {};
+
     this.state = {
 
       // Form's field values
@@ -108,6 +111,11 @@ class ContactForm extends React.Component {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    // const fieldRefs = this.fieldRefs;
+    // ...do something with component
   }
 
   /**
@@ -201,17 +209,17 @@ class ContactForm extends React.Component {
   }
 
   validateField(fieldName) {
-    const validity = this.refs[fieldName].validity;
+    const validity = this.fieldRefs[fieldName].validity;
     const label = document.querySelector(`label[for="contact-${fieldName}"]`).textContent;
     const isEmail = fieldName.indexOf('email') !== -1;
     const isEmailConfirm = fieldName === 'emailConfirm';
 
     if (isEmailConfirm) { // } || (refName === 'email' && this.refs.emailConfirm.value)) {
-      if (this.refs.email.value !== this.refs.emailConfirm.value) {
+      if (this.fieldRefs.email.value !== this.fieldRefs.emailConfirm.value) {
         // console.log(this.refs.email.value, this.refs.emailConfirm.value);
-        this.refs.emailConfirm.setCustomValidity('Email addresses do not match');
+        this.fieldRefs.emailConfirm.setCustomValidity('Email addresses do not match');
       } else {
-        this.refs.emailConfirm.setCustomValidity('');
+        this.fieldRefs.emailConfirm.setCustomValidity('');
       }
     }
 
@@ -232,7 +240,7 @@ class ContactForm extends React.Component {
 
   validate() {
     // console.log('validate', Object.keys(this.refs));
-    if (Object.keys(this.refs).length === 0) {
+    if (Object.keys(this.fieldRefs).length === 0) {
       return {};
     }
 
@@ -300,7 +308,7 @@ class ContactForm extends React.Component {
               type="text"
               id="contact-name"
               name="name"
-              ref="name"
+              ref={(c) => { this.fieldRefs.name = c; }}
               value={this.state.input.name}
               onBlur={this.handleBlur}
               onChange={this.handleChange}
@@ -315,7 +323,7 @@ class ContactForm extends React.Component {
               type="text"
               id="contact-companyName"
               name="companyName"
-              ref="companyName"
+              ref={(c) => { this.fieldRefs.companyName = c; }}
               value={this.state.input.companyName}
               onBlur={this.handleBlur}
               onChange={this.handleChange}
@@ -329,7 +337,7 @@ class ContactForm extends React.Component {
               type="phone"
               id="contact-phone"
               name="phone"
-              ref="phone"
+              ref={(c) => { this.fieldRefs.phone = c; }}
               value={this.state.input.phone}
               onBlur={this.handleBlur}
               onChange={this.handleChange}
@@ -343,7 +351,7 @@ class ContactForm extends React.Component {
               type="email"
               id="contact-email"
               name="email"
-              ref="email"
+              ref={(c) => { this.fieldRefs.email = c; }}
               value={this.state.input.email}
               onBlur={this.handleBlur}
               onChange={this.handleChange}
@@ -358,7 +366,7 @@ class ContactForm extends React.Component {
               type="email"
               id="contact-emailConfirm"
               name="emailConfirm"
-              ref="emailConfirm"
+              ref={(c) => { this.fieldRefs.emailConfirm = c; }}
               value={this.state.input.emailConfirm}
               onBlur={this.handleBlur}
               onChange={this.handleChange}
@@ -372,7 +380,7 @@ class ContactForm extends React.Component {
               className="form-group placeholder-shown"
               id="contact-comment"
               name="comment"
-              ref="comment"
+              ref={(c) => { this.fieldRefs.comment = c; }}
               value={this.state.input.comment}
               onBlur={this.handleBlur}
               onChange={this.handleChange}
@@ -383,7 +391,9 @@ class ContactForm extends React.Component {
           <button
             className={`btn btn-primary btn-submit ${formHasErrors && allTouched ? 'btn-error' : ''} ${validated ? 'btn-success' : ''}`}
             onClick={this.handleSubmit}
-          >Submit</button>
+          >
+            Submit
+          </button>
         </div>
 
         <ContactFormThankYou />

@@ -12,7 +12,7 @@ module.exports = {
       title: config.siteTitle,
       description: config.siteDescription,
       image_url: `${config.siteUrl + pathPrefix}/logos/logo-512.png`,
-      author: config.siteTitle, //config.userName,
+      author: config.siteTitle, // config.userName,
       copyright: config.copyright
     }
   },
@@ -37,11 +37,11 @@ module.exports = {
         color: config.themeColor
       }
     },
-    //'gatsby-plugin-sharp',
-    //'gatsby-plugin-catch-links',
-    //'gatsby-plugin-twitter',
-    //'gatsby-plugin-sitemap',
-    /*{
+    // 'gatsby-plugin-sharp',
+    // 'gatsby-plugin-catch-links',
+    // 'gatsby-plugin-twitter',
+    // 'gatsby-plugin-sitemap',
+    /* {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: config.siteTitle,
@@ -64,7 +64,7 @@ module.exports = {
           }
         ]
       }
-    },*/
+    }, */
     'gatsby-plugin-offline'
   ]
 };

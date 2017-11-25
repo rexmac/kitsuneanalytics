@@ -1,5 +1,7 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import PropTypes from 'prop-types';
+import Headroom from 'react-headroom';
+import { Link}  from 'gatsby-link';
 import capitalize from 'lodash/capitalize';
 import Scroll from 'react-scroll';
 import styles from './Nav.module.scss';
@@ -15,8 +17,7 @@ class Nav extends React.Component {
     super(props);
 
     this.state = {
-      expanded: false,
-      scrollPosition: 0
+      expanded: false
     };
 
     this.handleNavClickEvent = this.handleNavClickEvent.bind(this);
@@ -28,19 +29,12 @@ class Nav extends React.Component {
       expanded: false
     });
 
-    // @todo Trigger headroom hide nav?
     setTimeout(() => {this.props.headroomRef.unpin()}, 500);
-    //this.props.headroomRef.unpin();
-
-    // Custom scroll logic here to scroll to *top* of page anchor element
-    // as some browsers will not scroll at all if even a sliver of the element
-    // is still in view at top of page.
   }
 
   handleToggleEvent() {
     this.setState({
-      expanded: !this.state.expanded,
-      scrollPosition: window.pageYOffset
+      expanded: !this.state.expanded
     });
   }
 
@@ -58,16 +52,6 @@ class Nav extends React.Component {
         document.body.classList.add('has-overlay');
       }
     }
-
-    /*
-    if (expanded) {
-      document.body.style.top = -scrollPosition + 'px';
-      // document.body.classList.add('show-overlay');
-    } else {
-      // document.body.classList.remove('show-overlay');
-      window.scrollTo(0, scrollPosition);
-      document.body.style.top = 0;
-    } */
 
     return (
       <nav className={styles['site-nav']}>
@@ -109,7 +93,7 @@ class Nav extends React.Component {
                   {linkText}
                 </Scroll.Link>
               )
-              : <Link to={target}>{linkText}</Link>;
+              : <Link to={target}>{linkText}</Link>; // eslint-disable-line jsx-a11y/anchor-is-valid
             return <li key={target}>{linkElem}</li>
           })}
         </ul>
@@ -117,5 +101,9 @@ class Nav extends React.Component {
     )
   }
 }
+
+Nav.propTypes = {
+  headroomRef: PropTypes.instanceOf(Headroom).isRequired
+};
 
 export default Nav;

@@ -16,8 +16,6 @@ class MainLayout extends React.Component {
   }
 
   componentDidMount() {
-    const headroom = this.headroom;
-    // ...do something with component
     this.setState({headroomRef: this.headroom});
   }
 
@@ -36,7 +34,7 @@ class MainLayout extends React.Component {
           {this.props.children()}
         </main>
 
-        <SiteFooter />
+        <SiteFooter eadroomRef={headroomRef} />
 
       </div>
     );

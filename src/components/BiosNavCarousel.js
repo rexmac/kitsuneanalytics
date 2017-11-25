@@ -1,5 +1,6 @@
-import React from 'react'
-import Slider from 'react-slick'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Slider from 'react-slick';
 
 class BiosNavCarousel extends React.Component {
   constructor(props) {
@@ -17,16 +18,16 @@ class BiosNavCarousel extends React.Component {
       accessibility: true,
       arrows: false,
       beforeChange: (currentSlide, nextSlide) => {
-        //console.log('beforeChange', currentSlide, nextSlide);
+        // console.log('beforeChange', currentSlide, nextSlide);
         this.handleChange(nextSlide);
       },
       centerMode: true,
       centerPadding: '0px',
       className: 'bios-nav',
       focusOnSelect: true,
-      //dots: false,
-      //fade: true,
-      //infinite: false,
+      // dots: false,
+      // fade: true,
+      // infinite: false,
       responsive: [{
         breakpoint: 768,
         settings: {
@@ -44,8 +45,8 @@ class BiosNavCarousel extends React.Component {
       speed: 600,
       slickGoTo: currentSlideIndex,
       slidesToShow: 5
-      //slidesToScroll: 1
-      //swipeToSlide: true
+      // slidesToScroll: 1
+      // swipeToSlide: true
     };
 
     const bios = this.props.bios;
@@ -53,13 +54,28 @@ class BiosNavCarousel extends React.Component {
     return (
       <Slider {...settings}>
         {
-          bios.map((bio, index) => {
-            return <div key={index}><div className="bio-photo"><img className="photo" src={bio.imgSrc} alt={bio.imgAlt} /></div></div>;
-          })
+          bios.map((bio) => (
+            <div>
+              <div className="bio-photo">
+                <img className="photo" src={bio.imgSrc} alt={bio.imgAlt} />
+              </div>
+            </div>
+          ))
         }
       </Slider>
     );
   }
 }
+
+BiosNavCarousel.propTypes = {
+  bios: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  currentSlideIndex: PropTypes.number,
+  onSlideIndexChange: PropTypes.func
+};
+
+BiosNavCarousel.defaultProps = {
+  currentSlideIndex: 0,
+  onSlideIndexChange: () => {}
+};
 
 export default BiosNavCarousel;

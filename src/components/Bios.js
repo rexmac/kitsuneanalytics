@@ -1,11 +1,12 @@
-import React from 'react'
-import BiosCarousel from './BiosCarousel'
+import React from 'react';
+import BiosCarousel from './BiosCarousel';
 
-const Bios = () =>
+const Bios = () => (
   <div className="bios">
     <div>
       <BiosCarousel />
     </div>
   </div>
+);
 
-export default Bios
+export default Bios;

@@ -25,8 +25,7 @@ class BackToTop extends React.Component {
 
     this.state = {
       hidden: true,
-      pinHeight: '99999px',
-      intervalId: 0
+      pinHeight: '99999px'
     };
 
     this.handlingScrollUpdate = false;
@@ -88,7 +87,9 @@ class BackToTop extends React.Component {
         className={renderStyle.join(' ')}
         style={inlineStyle}
         onClick={Scroll.animateScroll.scrollToTop}
-      ><span>Back to top</span></button>
+      >
+        <span>Back to top</span>
+      </button>
     );
   }
 }
