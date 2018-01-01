@@ -2,8 +2,18 @@
   "name": "kitsune-analytics",
   "description": "Kitsune Analytics",
   "version": "1.0.0",
+  "keywords": [
+    "kitsune analytics"
+  ],
+  "license": "UNLICENSED",
   "author": "Rex McConnell <rex@rexmac.com>",
+  "repository": "git@github.com:rexmac/kitsuneanalytics.git",
   "private": true,
+  "browserslist": [
+    "> 1%",
+    "IE >= 11",
+    "last 2 versions"
+  ],
   "dependencies": {
     "gatsby": "^1.9.119",
     "gatsby-link": "^1.6.28",
@@ -42,10 +52,6 @@
     "stylelint": "^8.2.0",
     "stylelint-config-standard": "^17.0.0"
   },
-  "keywords": [
-    "kitsune"
-  ],
-  "license": "UNLICENSED",
   "main": "n/a",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -62,6 +68,5 @@
     "lint:md": "remark content/posts/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write"
-  },
-  "repository": "git@github.com:rexmac/kitsuneanalytics.git"
+  }
 }
