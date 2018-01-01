@@ -7,7 +7,7 @@
   ],
   "license": "UNLICENSED",
   "author": "Rex McConnell <rex@rexmac.com>",
-  "repository": "git@github.com:rexmac/kitsuneanalytics.git",
+  "repository": "git@github.com:kitsuneanalytics/kitsuneanalytics.github.io.git",
   "private": true,
   "browserslist": [
     "> 1%",
