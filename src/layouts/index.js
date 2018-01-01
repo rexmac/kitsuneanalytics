@@ -34,7 +34,7 @@ class MainLayout extends React.Component {
           {this.props.children()}
         </main>
 
-        <SiteFooter eadroomRef={headroomRef} />
+        <SiteFooter headroomRef={headroomRef} />
 
       </div>
     );
