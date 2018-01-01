@@ -76,6 +76,8 @@ class BackToTop extends React.Component {
     const inlineStyle = {};
     if (currentScrollY >= this.state.pinHeight) {
       inlineStyle.bottom = 'auto';
+      // 56 on desktop
+      // 38 on mobile
       inlineStyle.top = document.documentElement.clientHeight - (currentScrollY - this.state.pinHeight) - 56; // 38;
     } else {
       inlineStyle.bottom = '1rem';

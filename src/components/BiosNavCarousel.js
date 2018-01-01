@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
@@ -8,15 +9,22 @@ class BiosNavCarousel extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentSlideIndex !== prevProps.currentSlideIndex) {
+      this.slider.slickGoTo(this.props.currentSlideIndex);
+    }
+  }
+
   handleChange(nextSlide) {
     this.props.onSlideIndexChange(nextSlide);
   }
 
   render() {
-    const currentSlideIndex = this.props.currentSlideIndex;
+    // const currentSlideIndex = this.props.currentSlideIndex;
     const settings = {
       accessibility: true,
-      arrows: false,
+      arrows: true,
+      // afterChange={this.props.afterChange
       beforeChange: (currentSlide, nextSlide) => {
         // console.log('beforeChange', currentSlide, nextSlide);
         this.handleChange(nextSlide);
@@ -27,35 +35,44 @@ class BiosNavCarousel extends React.Component {
       focusOnSelect: true,
       // dots: false,
       // fade: true,
-      // infinite: false,
-      responsive: [{
-        breakpoint: 768,
-        settings: {
-          arrows: true,
-          centerPadding: '32px',
-          slidesToShow: 3
+      infinite: true,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 960,
+          settings: 'unslick'
         }
-      },{
-        breakpoint: 660,
-        settings: {
-          arrows: true,
-          slidesToShow: 1
+        /*
+        {
+          breakpoint: 660,
+          settings: {
+            arrows: true,
+            slidesToShow: 1
+          }
+        },{
+          breakpoint: 900,
+          settings: {
+            arrows: true,
+            centerPadding: '32px',
+            slidesToShow: 3
+          }
         }
-      }],
+        */
+      ],
       speed: 600,
-      slickGoTo: currentSlideIndex,
-      slidesToShow: 5
-      // slidesToScroll: 1
-      // swipeToSlide: true
+      // slickGoTo: currentSlideIndex,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      swipeToSlide: false
     };
 
     const bios = this.props.bios;
 
     return (
-      <Slider {...settings}>
+      <Slider {...settings} ref={(slider) => { this.slider = slider; }}>
         {
-          bios.map((bio) => (
-            <div>
+          bios.map((bio, index) => (
+            <div key={index}>
               <div className="bio-photo">
                 <img className="photo" src={bio.imgSrc} alt={bio.imgAlt} />
               </div>
@@ -68,7 +85,7 @@ class BiosNavCarousel extends React.Component {
 }
 
 BiosNavCarousel.propTypes = {
-  bios: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  bios: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
   currentSlideIndex: PropTypes.number,
   onSlideIndexChange: PropTypes.func
 };

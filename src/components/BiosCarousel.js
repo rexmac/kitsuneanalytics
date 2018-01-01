@@ -9,6 +9,12 @@ class BiosCarousel extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentSlideIndex !== prevProps.currentSlideIndex) {
+      this.slider.slickGoTo(this.props.currentSlideIndex);
+    }
+  }
+
   handleChange(nextSlide) {
     this.props.onSlideIndexChange(nextSlide);
   }
@@ -29,8 +35,14 @@ class BiosCarousel extends React.Component {
       dots: false,
       fade: true,
       infinite: true,
+      responsive: [
+        {
+          breakpoint: 960,
+          settings: 'unslick'
+        }
+      ],
       speed: 600,
-      slickGoTo: currentSlideIndex,
+      // slickGoTo: currentSlideIndex,
       slidesToShow: 1,
       slidesToScroll: 1,
       swipeToSlide: true
@@ -39,7 +51,7 @@ class BiosCarousel extends React.Component {
     const bios = this.props.bios;
 
     return (
-      <Slider {...settings}>
+      <Slider {...settings} ref={(slider) => { this.slider = slider; }}>
         {
           bios.map((bio, index) =>
             <div key={index}><Bio {...bio} /></div> // eslint-disable-line react/no-array-index-key
@@ -50,7 +62,7 @@ class BiosCarousel extends React.Component {
   }
 }
 BiosCarousel.propTypes = {
-  bios: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  bios: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
   currentSlideIndex: PropTypes.number,
   onSlideIndexChange: PropTypes.func
 }

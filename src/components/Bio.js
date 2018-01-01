@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 
 const Bio = ({ name, title, href, imgSrc, imgAlt, desc }) => (
   <div className="bio">
+    {href ? (
+      <a href={href}>
+        <img className="photo" src={imgSrc} alt={imgAlt} />
+      </a>
+    ) : (
+      <img className="photo" src={imgSrc} alt={imgAlt} />
+    )}
+
     <h3 className="name">
       {href ? (
         <a href={href}>{name}</a>
@@ -14,14 +22,6 @@ const Bio = ({ name, title, href, imgSrc, imgAlt, desc }) => (
     {title &&
       <h4 className="title">{title}</h4>
     }
-
-    {href ? (
-      <a href={href}>
-        <img className="photo" src={imgSrc} alt={imgAlt} />
-      </a>
-    ) : (
-      <img className="photo" src={imgSrc} alt={imgAlt} />
-    )}
 
     <div className="description">
       {

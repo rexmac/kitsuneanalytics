@@ -18,6 +18,7 @@ class TeamCarousel extends React.Component {
   handleSlideIndexChange(newSlideIndex) {
     // console.log('handleSlideIndexChange', newSlideIndex);
     this.setState({ currentSlideIndex: newSlideIndex });
+    // **this.slider.slickGoTo(index);**
   }
 
   render() {

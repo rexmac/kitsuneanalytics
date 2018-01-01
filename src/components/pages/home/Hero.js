@@ -18,7 +18,7 @@ const Hero = () => (
         services that we use every day.
       </p>
       <p>
-        At Kitsune Analytics, all of our analysts hold a research-based PhD from various scientific fields. As such, we can
+        All of our analysts hold a research-based PhD from various scientific fields. As such, we can
         uniquely provide you with the confidence that your project is being taken care of by industry experts with a passion
         for data-driven problem solving and a professionalism that is unparalleled by typical industry standards.
       </p>

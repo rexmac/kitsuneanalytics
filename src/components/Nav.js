@@ -88,7 +88,7 @@ class Nav extends React.Component {
                   smooth
                   duration={500}
                   onClick={this.handleNavClickEvent}
-                  offset={300}
+                  offset={0}
                 >
                   {linkText}
                 </Scroll.Link>

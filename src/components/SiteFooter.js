@@ -60,12 +60,12 @@ class SiteFooter extends React.Component {
                     smooth
                     duration={500}
                     onClick={this.handleNavClickEvent}
-                    offset={300}
+                    offset={0}
                   >
                     {linkText}
                   </Scroll.Link>
                 )
-                : <Link to={target}>{linkText}</Link>; // eslint-disable-line jsx-a11y/anchor-is-valid 
+                : <Link to={target}>{linkText}</Link>; // eslint-disable-line jsx-a11y/anchor-is-valid
                   return <li key={target}>{linkElem}</li>
               })}
           </ul>

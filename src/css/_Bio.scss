@@ -5,6 +5,10 @@
 }
 
 .bios-nav {
+  &.unslicked {
+    display: none;
+  }
+
   .slick-active.slick-center {
     .bio-photo {
       transform: scale(1.25);
@@ -28,6 +32,7 @@
     height: 32px;
     background: #fff;
     border-radius: 50%;
+    z-index: 9;
 
     &:hover {
       cursor: pointer;
@@ -44,11 +49,11 @@
     }
 
     &.slick-prev {
-      left: 0;
+      //left: 0;
     }
 
     &.slick-next {
-      right: 0;
+      //right: 0;
     }
   }
 
@@ -95,8 +100,41 @@
   }
 }
 
+.bios {
+  &.unslicked {
+    .photo {
+      display: block;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
 .bio {
   padding: 1em 0 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    width: calc(100% + 6em);
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    top: calc(1em + 120px / 2); // .bio top padding plus half of .photo height
+    left: -3em;
+    z-index: 1;
+  }
+
+  @media only screen and (min-width: 60em) {
+    &::before {
+      display: none;
+    }
+  }
 
   h3 {
     color: var(--kitsuneOrange);
@@ -106,5 +144,9 @@
   h4 {
     color: var(--kitsuneOrange);
     font-size: 1.15rem;
+  }
+
+  .photo {
+    display: none;
   }
 }
