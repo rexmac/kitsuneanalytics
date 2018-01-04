@@ -45,6 +45,24 @@ module.exports = {
         color: config.themeColor
       }
     },
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: './src/favicon.png',
+        injectHTML: true,
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: true,
+          favicons: true,
+          firefox: true,
+          twitter: true,
+          yandex: true,
+          windows: true
+        }
+      }
+    },
     // 'gatsby-plugin-sharp',
     // 'gatsby-plugin-catch-links',
     // 'gatsby-plugin-twitter',
