@@ -3,10 +3,17 @@ import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import Bio from './Bio';
 
+let SliderFe;
+
 class BiosCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount () {
+    SliderFe = Slider;
+    this.forceUpdate();
   }
 
   componentDidUpdate(prevProps) {
@@ -50,14 +57,26 @@ class BiosCarousel extends React.Component {
 
     const bios = this.props.bios;
 
+    if (SliderFe) {
+      return (
+        <SliderFe {...settings} ref={(slider) => { this.slider =  slider; }}>
+          {
+            bios.map((bio, index) =>
+              <div key={index}><Bio {...bio} /></div> //  eslint-disable-line react/no-array-index-key
+            )
+          }
+        </SliderFe>
+      );
+    }
+
     return (
-      <Slider {...settings} ref={(slider) => { this.slider = slider; }}>
+      <div className="bios">
         {
           bios.map((bio, index) =>
-            <div key={index}><Bio {...bio} /></div> // eslint-disable-line react/no-array-index-key
+            <div key={index}><Bio {...bio} /></div> //  eslint-disable-line react/no-array-index-key
           )
         }
-      </Slider>
+      </div>
     );
   }
 }

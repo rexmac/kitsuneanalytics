@@ -3,10 +3,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 
+let SliderFe;
+
 class BiosNavCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount () {
+    SliderFe = Slider;
+    this.forceUpdate();
   }
 
   componentDidUpdate(prevProps) {
@@ -68,8 +75,24 @@ class BiosNavCarousel extends React.Component {
 
     const bios = this.props.bios;
 
+    if (SliderFe) {
+      return (
+        <SliderFe {...settings} ref={(slider) => { this.slider = slider; }}>
+          {
+            bios.map((bio, index) => (
+              <div key={index}>
+                <div className="bio-photo">
+                  <img className="photo" src={bio.imgSrc} alt={bio.imgAlt} />
+                </div>
+              </div>
+            ))
+          }
+        </SliderFe>
+      );
+    }
+
     return (
-      <Slider {...settings} ref={(slider) => { this.slider = slider; }}>
+      <div className="bios-nav">
         {
           bios.map((bio, index) => (
             <div key={index}>
@@ -79,7 +102,7 @@ class BiosNavCarousel extends React.Component {
             </div>
           ))
         }
-      </Slider>
+      </div>
     );
   }
 }

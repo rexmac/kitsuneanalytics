@@ -12,3 +12,7 @@
     border-bottom: none;
   }
 }
+
+.headroom.headroom--pinned {
+  z-index: 9 !important;
+}
