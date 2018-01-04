@@ -18,6 +18,14 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-postcss-sass',
+    /* {
+      resolve: `gatsby-plugin-postcss-sass`,
+      options: {
+        postCssPlugins: [
+          // somePostCssPlugin()
+        ]
+      }
+    }, */
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-typography`,
@@ -40,7 +48,7 @@ module.exports = {
     // 'gatsby-plugin-sharp',
     // 'gatsby-plugin-catch-links',
     // 'gatsby-plugin-twitter',
-    // 'gatsby-plugin-sitemap',
+    'gatsby-plugin-sitemap'
     /* {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -65,6 +73,6 @@ module.exports = {
         ]
       }
     }, */
-    'gatsby-plugin-offline'
+    // 'gatsby-plugin-offline'
   ]
 };
