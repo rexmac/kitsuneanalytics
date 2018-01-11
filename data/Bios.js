@@ -7,7 +7,7 @@ import rachel from '../src/img/team/rachel.jpg';
 export default [
   {
     name: 'Dr. Rachel Kowert',
-    title: "Founder of Kitsune Analytics. Data Analyst and Research Consultant",
+    title: "Founder, Chief Scientific Officer",
     href: '',
     imgSrc: rachel,
     imgAlt: 'Dr. Rachel Kowert',
@@ -50,7 +50,7 @@ Databases: MongoDB, Neo4j, SQL`
     href: '',
     imgSrc: jimmy,
     imgAlt: 'Jimmy Trippier',
-    desc: `Jimmy Trippier is a Graphic Artist and Illustrator with over 8 years in creative and advertising industries. With a broad range of experience in almost all areas of visual communications and a work style that evolves with an ever-changing industry, his background covers a multitude of disciplines from traditional brand and print design to digital, illustration and larger art direction projects. 
+    desc: `Jimmy Trippier is a Graphic Artist and Illustrator with over 8 years in creative and advertising industries. With a broad range of experience in almost all areas of visual communications and a work style that evolves with an ever-changing industry, his background covers a multitude of disciplines from traditional brand and print design to digital, illustration and larger art direction projects.
 
 Previously working as a Creative Designer & Art Director for the globally renowned advertising agency McCann Erickson, Jim now works as a freelance Graphic Artist and Illustrator out of Manchester, UK.
 
