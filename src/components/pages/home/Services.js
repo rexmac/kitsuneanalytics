@@ -5,14 +5,14 @@ const Services = () => (
     <div className="box">
       <h2>What we do</h2>
       <p>
-        Kitsune Analytics is a comprehensive consulting firm with a focus on user research. Using data-driven
-        techniques, the scientists at Kitsune Analytics will provide the insights you need about the users of your
-        products and services. After the initial consultation, we will provide a customized plan to suit your needs and
-        see your project through from start to finish.
+        Kitsune Analytics is a comprehensive consulting firm specializing in bespoke data and analytic solutions. Using
+        data-driven techniques, the scientists at Kitsune Analytics will provide the insights you need about the users
+        of your products and services. After the initial consultation, we will provide a customized plan to suit your
+        needs and see your project through from start to finish.
       </p>
       <p>
         We are not a simple market research or analytics firm — we are the best of both worlds! Because we employ
-        a team of research scientists, we are able to make data-driven insights into how your application and/or
+        a team of behavioral scientists, we are able to make data-driven insights into how your application and/or
         services are perceived, where they excel, where they are lacking, and what strategies could be employed to
         improve performance, likeability, retention, and increase use (as well as a range of other improvement
         measures).

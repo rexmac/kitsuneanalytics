@@ -13,9 +13,7 @@ export default [
     imgAlt: 'Dr. Rachel Kowert',
     desc: `Dr. Rachel Kowert is a research psychologist with more than 10 years experience in quantitative research. Her work has included the development and design of cross-sectional and longitudinal assessments within large data sets, including survey-based and experimental designs.
 
-Dr. Kowert has extensive experience with a range of quantitative data analysis techniques using SPSS and AMOS, including ANOVA, MANOVA, hierarchical regression analyses, moderated and mediated regression analyses and cross-lagged path analysis via structural equation modeling. In the last ten years, she has published numerous scientific articles and four books.
-
-Through these techniques, she is able to exact information from large amounts of data to provide actionable insight into the questions that need to be answered. Dr. Kowert is also very experienced in presenting scientific to scientific and nonscientific audiences.`
+Dr. Kowert has extensive experience with a range of quantitative data analysis techniques using SPSS and AMOS, including ANOVA, MANOVA, hierarchical regression analyses, moderated and mediated regression analyses and cross-lagged path analysis via structural equation modeling. In the last ten years, she has published numerous scientific articles and books.`
   }, {
     name: 'Dr. Katya Krieger-Redwood',
     title: 'Data Analyst and Research Consultant',

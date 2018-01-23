@@ -9,7 +9,7 @@ const Hero = () => (
     </div>
     <div className="box">
       <h2>
-        Bespoke data and analytic solutions
+        Revolutionizing data-driven decision making with behavioral science
       </h2>
       <p>
         Kitsune Analytics developed from a shared desire to create more transparent links between science, society, and
